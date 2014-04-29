@@ -1,1 +1,1 @@
-Test view
+Welcome to VEGAS!

@@ -12,13 +12,12 @@
  
 namespace Test\Controllers\Frontend;
 
-
 use Vegas\Mvc\Controller\ControllerAbstract;
 
-class FakeController extends ControllerAbstract
+class HomeController extends ControllerAbstract
 {
-    public function testAction()
+    public function indexAction()
     {
-
+        var_dump(1);
     }
 } 

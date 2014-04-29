@@ -28,4 +28,16 @@ class Bootstrap extends \Vegas\Application\Bootstrap
         $mappingManager = new MappingManager();
         $mappingManager->add(new Json());
     }
+
+    /**
+     * Start handling MVC requests
+     *
+     * @param null $uri
+     * @return string
+     */
+    public function run($uri = null)
+    {
+        $content = $this->application->handle($uri)->getContent();
+        return $content;
+    }
 } 
