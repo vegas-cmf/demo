@@ -4,7 +4,7 @@ return array(
         'route' =>  '/',
         'type'  =>  'static',
         'paths' =>  array(
-            'module'    =>  'test',
+            'module'    =>  'Test',
             'controller'    =>  'Frontend\Home',
             'action'    =>  'index'
         )

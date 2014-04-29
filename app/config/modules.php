@@ -2,6 +2,6 @@
   'Test' => 
   array (
     'className' => 'Test\\Module',
-    'path' => '/var/www/vegas-cmf/vegas-cmf-core/tests/fixtures/app/module/Test/Module.php',
-  )
+    'path' => '/var/www/vegas-cmf/vegas-demo/app/module/Test/Module.php',
+  ),
 );

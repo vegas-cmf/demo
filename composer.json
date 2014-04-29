@@ -22,8 +22,7 @@
     "require": {
         "php": ">=5.4",
         "ext-phalcon": ">=1.3.0,<2",
-        "vegas-cmf/core" : "default",
-        "pretty-exceptions": "dev-master"
+        "vegas-cmf/core" : "default"
     },
     "require-dev": {
         "phpunit/phpunit": "4.0.*"
