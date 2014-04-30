@@ -1,7 +1,7 @@
 <?php return array (
-  'MongoServiceProvider' => '/var/www/vegas-cmf/vegas-demo/app/services/MongoServiceProvider.php',
-  'CollectionManagerServiceProvider' => '/var/www/vegas-cmf/vegas-demo/app/services/CollectionManagerServiceProvider.php',
-  'ViewCacheServiceProvider' => '/var/www/vegas-cmf/vegas-demo/app/services/ViewCacheServiceProvider.php',
-  'UrlServiceProvider' => '/var/www/vegas-cmf/vegas-demo/app/services/UrlServiceProvider.php',
-  'AssetsServiceProvider' => '/var/www/vegas-cmf/vegas-demo/app/services/AssetsServiceProvider.php',
+  'MongoServiceProvider' => dirname(__DIR__).'/services/MongoServiceProvider.php',
+  'CollectionManagerServiceProvider' => dirname(__DIR__).'/services/CollectionManagerServiceProvider.php',
+  'ViewCacheServiceProvider' => dirname(__DIR__).'/services/ViewCacheServiceProvider.php',
+  'UrlServiceProvider' => dirname(__DIR__).'/services/UrlServiceProvider.php',
+  'AssetsServiceProvider' => dirname(__DIR__).'/services/AssetsServiceProvider.php',
 );

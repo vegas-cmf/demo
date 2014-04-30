@@ -2,6 +2,6 @@
   'Test' => 
   array (
     'className' => 'Test\\Module',
-    'path' => '/var/www/vegas-cmf/vegas-demo/app/module/Test/Module.php',
+    'path' => dirname(__DIR__).'/module/Test/Module.php',
   ),
 );
