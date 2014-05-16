@@ -1,4 +1,4 @@
-<?php
+    <?php
 /**
  * This file is part of Vegas package
  *
@@ -13,18 +13,24 @@
 use Phalcon\DiInterface;
 use Vegas\DI\ServiceProviderInterface;
 use Phalcon\Mvc\Url as UrlResolver;
+use \Vegas\Session\Adapter\Files as SessionAdapter;
 
-class CollectionManagerServiceProvider implements ServiceProviderInterface
+class AuthServiceProvider implements ServiceProviderInterface
 {
-    const SERVICE_NAME = 'collectionManager';
+    const SERVICE_NAME = 'auth';
 
     /**
      * {@inheritdoc}
      */
     public function register(DiInterface $di)
     {
-        $di->set(self::SERVICE_NAME, function() use ($di) {
-            return new \Phalcon\Mvc\Collection\Manager();
+        $di->set(self::SERVICE_NAME, function () use ($di) {
+            $adapter = new \Vegas\Security\Authentication\Adapter\Standard($di->get('userPasswordManager'));
+            $adapter->setSessionStorage($di->get('sessionManager')->createScope('auth'));
+            $auth = new \Vegas\Security\Authentication($adapter);
+
+            return $auth;
         }, true);
+
     }
 } 

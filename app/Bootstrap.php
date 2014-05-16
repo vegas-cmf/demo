@@ -9,7 +9,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
- 
+
 use Vegas\Db\Mapping\Json;
 use Vegas\Db\MappingManager;
 
@@ -27,17 +27,5 @@ class Bootstrap extends \Vegas\Application\Bootstrap
     {
         $mappingManager = new MappingManager();
         $mappingManager->add(new Json());
-    }
-
-    /**
-     * Start handling MVC requests
-     *
-     * @param null $uri
-     * @return string
-     */
-    public function run($uri = null)
-    {
-        $content = $this->application->handle($uri)->getContent();
-        return $content;
     }
 } 

@@ -14,9 +14,6 @@ use Phalcon\DiInterface;
 use Vegas\DI\ServiceProviderInterface;
 use Phalcon\Mvc\Url as UrlResolver;
 
-/**
- * Class UrlServiceProvider
- */
 class MongoServiceProvider implements ServiceProviderInterface
 {
     const SERVICE_NAME = 'mongo';

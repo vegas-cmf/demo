@@ -16,13 +16,29 @@
         {
             "type" : "git",
             "url" : "https://bitbucket.org/amsdard/vegas-cmf-core.git"
+        },
+        {
+            "type" : "git",
+            "url" : "https://bitbucket.org/amsdard/vegas-cmf-core.git"
+        },
+        {
+            "type" : "git",
+            "url" : "https://bitbucket.org/amsdard/vegas-cmf-session.git"
+        },
+        {
+            "type" : "git",
+            "url" : "https://bitbucket.org/amsdard/vegas-cmf-auth.git"
         }
     ],
     "minimum-stability" : "dev",
     "require": {
         "php": ">=5.4",
         "ext-phalcon": ">=1.3.0,<2",
-        "vegas-cmf/core" : "default"
+        "phalcon/devtools": "1.3.x-dev",
+        "phalcon/incubator": "dev-master",
+        "vegas-cmf/core" : "dev-master",
+        "vegas-cmf/session" : "dev-master",
+        "vegas-cmf/auth" : "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "4.0.*"

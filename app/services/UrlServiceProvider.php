@@ -1,4 +1,4 @@
-<?php
+    <?php
 /**
  * This file is part of Vegas package
  *
@@ -14,9 +14,6 @@ use Phalcon\DiInterface;
 use Vegas\DI\ServiceProviderInterface;
 use Phalcon\Mvc\Url as UrlResolver;
 
-/**
- * Class UrlServiceProvider
- */
 class UrlServiceProvider implements ServiceProviderInterface
 {
     const SERVICE_NAME = 'url';
