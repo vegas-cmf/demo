@@ -12,7 +12,6 @@
 
 namespace Auth\Services;
 
-
 use Auth\Models\BaseUser;
 
 class Auth implements \Phalcon\DI\InjectionAwareInterface
