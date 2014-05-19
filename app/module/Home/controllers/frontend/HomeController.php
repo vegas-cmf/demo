@@ -13,6 +13,7 @@
 namespace Home\Controllers\Frontend;
 
 use Vegas\Mvc\Controller\ControllerAbstract;
+use Vegas\Security\OAuth\Adapter\Linkedin;
 
 /**
  * Class HomeController
@@ -27,5 +28,33 @@ class HomeController extends ControllerAbstract
 
             $this->view->identity = $identity;
         }
+
+
+    }
+
+    private function initLinkedin()
+    {
+        $oauth = new \Vegas\Security\OAuth($this->di);
+        $oauth->setAdapter('linkedin');
+        $oauth->setupCredentials(array(
+            'key'   =>  '77vrwtb3qaiq8y',
+            'secret'    =>  'xRFH1mvEwQez6Uvm',
+            'redirect_uri'  =>  $this->router->getRouteByName('linkedin')->getCompiledPattern()
+        ));
+        $oauth->addScope(Linkedin::SCOPE_BASIC_PROFILE);
+        $oauth->init();
+        return $oauth;
+    }
+
+    public function oauthAction()
+    {
+        $linkedinOAuth = $this->initLinkedin();
+        $this->view->linkedinUri = $linkedinOAuth->getAuthorizationUri();
+    }
+
+    public function linkedinAction()
+    {
+        $linkedinOAuth = $this->initLinkedin();
+        $this->view->token = $linkedinOAuth->authenticate();
     }
 } 

@@ -28,6 +28,10 @@
         {
             "type" : "git",
             "url" : "https://bitbucket.org/amsdard/vegas-cmf-auth.git"
+        },
+        {
+            "type" : "git",
+            "url" : "https://bitbucket.org/amsdard/vegas-cmf-oauth.git"
         }
     ],
     "minimum-stability" : "dev",
@@ -38,7 +42,8 @@
         "phalcon/incubator": "dev-master",
         "vegas-cmf/core" : "dev-master",
         "vegas-cmf/session" : "dev-master",
-        "vegas-cmf/auth" : "dev-master"
+        "vegas-cmf/auth" : "dev-master",
+        "vegas-cmf/oauth" : "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "4.0.*"
