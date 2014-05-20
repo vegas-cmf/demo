@@ -41,7 +41,7 @@ class HomeController extends ControllerAbstract
             'secret'    =>  'xRFH1mvEwQez6Uvm',
             'redirect_uri'  =>  $this->router->getRouteByName('linkedin')->getCompiledPattern()
         ));
-        $oauth->addScope(Linkedin::SCOPE_BASIC_PROFILE);
+        $oauth->addScope(Linkedin::SCOPE_FULL_PROFILE);
         $oauth->init();
         return $oauth;
     }
@@ -50,11 +50,30 @@ class HomeController extends ControllerAbstract
     {
         $linkedinOAuth = $this->initLinkedin();
         $this->view->linkedinUri = $linkedinOAuth->getAuthorizationUri();
+
+        $this->view->isAuthenticated = $linkedinOAuth->isAuthenticated();
+        try {
+            if ($linkedinOAuth->isAuthenticated()) {
+                $response = $linkedinOAuth->request('/people/~?format=json');
+                $this->view->firstName = $response['firstName'];
+                $this->view->lastName = $response['lastName'];
+            }
+        } catch (\Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 
     public function linkedinAction()
     {
         $linkedinOAuth = $this->initLinkedin();
-        $this->view->token = $linkedinOAuth->authenticate();
+        $token = $linkedinOAuth->authenticate();
+
+        $this->response->redirect('oauth');
+    }
+
+    public function logoutAction()
+    {
+        $linkedinOAuth = $this->initLinkedin();
+        $linkedinOAuth->destroy();
     }
 } 
