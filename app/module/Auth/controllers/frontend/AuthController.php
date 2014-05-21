@@ -21,6 +21,11 @@ use Auth\Models\BaseUser;
 class AuthController extends \Vegas\Mvc\Controller\ControllerAbstract
 {
 
+    public function signupAction()
+    {
+
+    }
+
     /**
      * @ACL(name='login', description='Login action')
      * @throws \Vegas\Security\Authentication\Exception\InvalidCredentialException
@@ -34,7 +39,16 @@ class AuthController extends \Vegas\Mvc\Controller\ControllerAbstract
         }
         $this->view->setLayout('login');
         $this->view->setRenderLevel(\Vegas\Mvc\View::LEVEL_LAYOUT);
-        
+
+        //oauth
+        $oAuth = $this->serviceManager->getService('oauth:oauth');
+        $oAuth->initialize();
+
+        $this->view->linkedinUri = $oAuth->getAuthorizationUri('linkedin');
+        $this->view->facebookUri = $oAuth->getAuthorizationUri('facebook');
+        $this->view->googleUri = $oAuth->getAuthorizationUri('google');
+
+
         if ($this->request->isPost()) {
             try {
                 $email = $this->request->getPost('email');

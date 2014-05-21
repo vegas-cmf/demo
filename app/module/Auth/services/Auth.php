@@ -22,7 +22,7 @@ class Auth implements \Phalcon\DI\InjectionAwareInterface
     {
         $user = BaseUser::findFirst(array(array('email' => $email)));
         if (!$user) {
-            throw new \Vegas\Security\Authentication\Exception\InvalidCredentialException();
+            throw new \Vegas\Security\Authentication\Exception\IdentityNotFoundException();
         }
         $this->di->get('auth')->authenticate($user, $password);
     }
@@ -31,5 +31,18 @@ class Auth implements \Phalcon\DI\InjectionAwareInterface
     {
         $auth = $this->di->get('auth');
         $auth->logout();
+    }
+
+    public function authenticateByEmail($email)
+    {
+        $user = BaseUser::findFirst(array(array('email' => $email)));
+        if (!$user) {
+            throw new \Vegas\Security\Authentication\Exception\IdentityNotFoundException();
+        }
+
+        $adapter = new \Vegas\Security\Authentication\Adapter\Email($this->di->get('userPasswordManager'));
+        $adapter->setSessionStorage($this->di->get('sessionManager')->createScope('auth'));
+        $auth = new \Vegas\Security\Authentication($adapter);
+        $auth->authenticate($user, null);
     }
 }

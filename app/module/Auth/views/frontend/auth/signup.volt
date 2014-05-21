@@ -8,25 +8,23 @@
         ->addCss('assets/vendor/bootstrap-social/bootstrap-social.css')
         ;
 ?>
-<form class="form-signin" role="form" method="POST">
-    <h2 class="form-signin-heading">Please sign in</h2>
+<form class="form-signup" role="form" method="POST">
+    <h2 class="form-signup-heading">Please sign up</h2>
     <input type="email" class="form-control" placeholder="Email address" name="email" required autofocus>
     <input type="password" class="form-control" placeholder="Password" name="password" required>
-    <label class="checkbox">
-        <input type="checkbox" value="remember-me"> Remember me
-    </label>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <input type="password" class="form-control" placeholder="Re-type password" name="password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 
     <a href="{{ linkedinUri }}" class="btn btn-block btn-social btn-linkedin">
         <i class="fa fa-linkedin"></i>
-        Sign in with Linkedin
+        Sign up with Linkedin
     </a>
     <a href="{{ googleUri }}" class="btn btn-block btn-social btn-google-plus">
         <i class="fa fa-google-plus"></i>
-        Sign in with Google
+        Sign up with Google
     </a>
     <a href="{{ facebookUri }}" class="btn btn-block btn-social btn-facebook">
         <i class="fa fa-facebook"></i>
-        Sign in with Facebook
+        Sign up with Facebook
     </a>
 </form>
