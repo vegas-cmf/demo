@@ -13,6 +13,8 @@
 namespace Auth\Services;
 
 use Auth\Models\BaseUser;
+use User\Models\User;
+use Vegas\Security\OAuth\Exception\ServiceNotFoundException;
 
 class Auth implements \Phalcon\DI\InjectionAwareInterface
 {
@@ -29,6 +31,14 @@ class Auth implements \Phalcon\DI\InjectionAwareInterface
 
     public function logout() 
     {
+        $identity = $this->di->get('auth')->getIdentity();
+        if (($service = $identity->getService()) != null) {
+            try {
+                $oAuthService = $this->di->get('serviceManager')->getService('oauth:oauth')->initialize();
+                $oAuthService->logout($service);
+            } catch (ServiceNotFoundException $ex) {
+            }
+        }
         $auth = $this->di->get('auth');
         $auth->logout();
     }
@@ -39,10 +49,9 @@ class Auth implements \Phalcon\DI\InjectionAwareInterface
         if (!$user) {
             throw new \Vegas\Security\Authentication\Exception\IdentityNotFoundException();
         }
-
         $adapter = new \Vegas\Security\Authentication\Adapter\Email($this->di->get('userPasswordManager'));
         $adapter->setSessionStorage($this->di->get('sessionManager')->createScope('auth'));
         $auth = new \Vegas\Security\Authentication($adapter);
-        $auth->authenticate($user, null);
+        return $auth->authenticate($user, null);
     }
 }

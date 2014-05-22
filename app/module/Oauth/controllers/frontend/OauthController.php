@@ -10,6 +10,7 @@
  * file that was distributed with this source code.
  */
 namespace Oauth\Controllers\Frontend;
+use User\Services\Exception\SignUpFailedException;
 use Vegas\Security\Authentication\Exception\IdentityNotFoundException;
 
 /**
@@ -34,13 +35,19 @@ class OauthController extends \Vegas\Mvc\Controller\ControllerAbstract
 
         $token = $oauth->authorize($serviceName);
         $identity = $oauth->getIdentity($serviceName);
-        var_dump($identity);die;
         try {
             $oauth->authenticate($serviceName, $token, $identity);
-        } catch (IdentityNotFoundException $ex) {
+            return $this->response->redirect(array('for' => 'root'))->send();
 
+        } catch (IdentityNotFoundException $ex) {
+            $this->flashSession->message('error', $ex->getMessage());
+        } catch (SignUpFailedException $ex) {
+            $this->flashSession->message('error', $ex->getMessage());
+        } catch (\Exception $ex) {
+            $this->flashSession->message('error', $ex->getMessage());
         }
-        return $this->response->redirect('/');
+
+        return $this->response->redirect(array('for' => 'login'))->send();
     }
 }
  

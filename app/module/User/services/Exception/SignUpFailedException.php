@@ -10,17 +10,15 @@
  * file that was distributed with this source code.
  */
  
-namespace Home\Controllers\Frontend;
+namespace User\Services\Exception;
 
-use Vegas\Mvc\Controller\ControllerAbstract;
+use Vegas\Exception as VegasException;
 
 /**
- * Class HomeController
- * @package Home\Controllers\Frontend
+ * Class SignUpFailedException
+ * @package User\Services\Exception
  */
-class HomeController extends ControllerAbstract
+class SignUpFailedException extends VegasException
 {
-    public function indexAction()
-    {
-    }
+    protected $message = 'Failed to create account';
 } 

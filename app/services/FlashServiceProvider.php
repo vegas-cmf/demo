@@ -26,11 +26,11 @@ class FlashServiceProvider implements ServiceProviderInterface
     {
         $di->set(self::SERVICE_NAME, function() {
             return new \Phalcon\Flash\Session(array(
-                'error' => 'flash-message flash-error',
-                'success' => 'flash-message flash-success',
-                'notice' => 'flash-message flash-info',
+                'error' => 'alert alert-danger',
+                'success' => 'alert alert-success',
+                'notice' => 'alert alert-info',
             ));
         });
 
     }
-} 
+}

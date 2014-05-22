@@ -29,4 +29,5 @@
         <i class="fa fa-facebook"></i>
         Sign in with Facebook
     </a>
+    <a href="{{ url.get(['for': 'signup']) }}">Don't have account?</a>
 </form>

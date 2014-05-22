@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 namespace Auth\Controllers\Frontend;
-use Auth\Models\BaseUser;
+use Vegas\Security\OAuth\Exception\ServiceNotFoundException;
 
 /**
  * Class AuthController
@@ -23,7 +23,8 @@ class AuthController extends \Vegas\Mvc\Controller\ControllerAbstract
 
     public function signupAction()
     {
-
+        $this->view->setLayout('login');
+        $this->view->setRenderLevel(\Vegas\Mvc\View::LEVEL_LAYOUT);
     }
 
     /**
@@ -33,13 +34,13 @@ class AuthController extends \Vegas\Mvc\Controller\ControllerAbstract
      */
     public function loginAction()
     {
-        $this->service = $this->serviceManager->getService('auth:auth');
-        if ($this->di->get('auth')->isAuthenticated()) {
-            return $this->response->redirect('');
-        }
         $this->view->setLayout('login');
         $this->view->setRenderLevel(\Vegas\Mvc\View::LEVEL_LAYOUT);
 
+        $this->service = $this->serviceManager->getService('auth:auth');
+        if ($this->di->get('auth')->isAuthenticated()) {
+            return $this->response->redirect(array('for' => 'root'));
+        }
         //oauth
         $oAuth = $this->serviceManager->getService('oauth:oauth');
         $oAuth->initialize();
@@ -47,7 +48,6 @@ class AuthController extends \Vegas\Mvc\Controller\ControllerAbstract
         $this->view->linkedinUri = $oAuth->getAuthorizationUri('linkedin');
         $this->view->facebookUri = $oAuth->getAuthorizationUri('facebook');
         $this->view->googleUri = $oAuth->getAuthorizationUri('google');
-
 
         if ($this->request->isPost()) {
             try {
@@ -74,9 +74,11 @@ class AuthController extends \Vegas\Mvc\Controller\ControllerAbstract
      */
     public function logoutAction()
     {
-        $this->service = $this->serviceManager->getService('auth:auth');
-        $this->service->logout();
-        return $this->response->redirect('login');
+        $this->view->disable();
+
+        $authService = $this->serviceManager->getService('auth:auth');
+        $authService->logout();
+        return $this->response->redirect(array('for' => 'login'));
     }
 }
  

@@ -23,6 +23,8 @@ class Bootstrap extends \Vegas\Application\Bootstrap
         return $this;
     }
 
+    public function getDI(){return $this->di;}
+
     protected function initDbMappings()
     {
         $mappingManager = new MappingManager();

@@ -21,6 +21,6 @@ return array(
 
             'auth'  =>  'auth'
         ),
-        'type' => 'static',
+        'type' => 'static'
     )
 );

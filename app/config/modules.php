@@ -14,4 +14,9 @@
     'className' => 'Oauth\\Module',
     'path' => '/var/www/vegas/vegas-demo/app/module/Oauth/Module.php',
   ),
+  'User' => 
+  array (
+    'className' => 'User\\Module',
+    'path' => '/var/www/vegas/vegas-demo/app/module/User/Module.php',
+  ),
 );

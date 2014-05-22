@@ -1,0 +1,4 @@
+#0 [internal function]: Phalcon\DI->getShared('view')
+#1 /var/www/vegas/vegas-demo/vendor/vegas-cmf/core/src/Application/Bootstrap.php(191): Phalcon\Mvc\Application->handle(NULL)
+#2 /var/www/vegas/vegas-demo/public/index.php(17): Vegas\Application\Bootstrap->run()
+#3 {main}

@@ -24,6 +24,12 @@ class PrivateController extends ControllerAbstract
     {
         $identity = $this->di->get('auth')->getIdentity();
 
+        $this->view->identityDbg = print_r($identity, true);
         $this->view->identity = $identity;
+
+
+        $oauth = $this->serviceManager->getService('oauth:oauth')->initialize();
+        $oauthIdentity = $oauth->getIdentity($identity->getService());
+        $this->view->oauthIdentity = print_r($oauthIdentity, true);
     }
 } 

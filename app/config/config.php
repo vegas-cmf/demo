@@ -3,7 +3,7 @@ return array(
     'application' => array(
         'servicesDir'   =>  APP_ROOT . '/app/services/',
         'configDir'     => dirname(__FILE__) . DIRECTORY_SEPARATOR,
-        'libraryDir'     => dirname(APP_ROOT) . DIRECTORY_SEPARATOR,
+        'libraryDir'     => APP_ROOT . DIRECTORY_SEPARATOR . 'lib/',
         'pluginDir'      => APP_ROOT . '/app/plugins/',
         'moduleDir'      => APP_ROOT . '/app/module/',
         'baseUri'        => '/',
@@ -66,7 +66,7 @@ return array(
     ),
 
     'mongo' => array(
-        'db' => 'vegas_test',
+        'db' => 'vegas_demo',
     ),
 
     'session' => array(

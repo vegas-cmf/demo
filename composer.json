@@ -32,6 +32,18 @@
         {
             "type" : "git",
             "url" : "https://bitbucket.org/amsdard/vegas-cmf-oauth.git"
+        },
+        {
+            "type" : "git",
+            "url" : "https://bitbucket.org/amsdard/vegas-cmf-filter.git"
+        },
+        {
+            "type" : "git",
+            "url" : "https://bitbucket.org/amsdard/vegas-cmf-validation.git"
+        },
+        {
+            "type" : "git",
+            "url" : "https://bitbucket.org/amsdard/vegas-cmf-forms.git"
         }
     ],
     "minimum-stability" : "dev",
@@ -43,7 +55,10 @@
         "vegas-cmf/core" : "dev-master",
         "vegas-cmf/session" : "dev-master",
         "vegas-cmf/auth" : "dev-master",
-        "vegas-cmf/oauth" : "dev-master"
+        "vegas-cmf/oauth" : "dev-master",
+        "vegas-cmf/filter" : "dev-master",
+        "vegas-cmf/validation" : "dev-master",
+        "vegas-cmf/forms" : "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "4.0.*"

@@ -6,6 +6,15 @@
         Logged in as {{ identity.getEmail() }} | <a href="{{ url.get(['for' : 'logout']) }}">Logout</a>
     </p>
     {% endif %}
+    <pre>
+        {{ identityDbg }}
+    </pre>
+    <pre>
+        {{ oauthIdentity }}
+    </pre>
+    <pre>
+        {{ token }}
+    </pre>
 </div>
 
 <div class="mastfoot">

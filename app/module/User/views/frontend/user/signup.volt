@@ -1,4 +1,13 @@
 {{ flash.output() }}
+{% if formErrors is defined %}
+<div class="alert alert-danger">
+    <ul>
+        {%  for label,error in formErrors %}
+        <li><strong>{{ label }}</strong> - {{ error }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
 <?php
     $this->assets
         ->addJs('assets/vendor/jquery/dist/jquery.min.js')
@@ -8,11 +17,11 @@
         ->addCss('assets/vendor/bootstrap-social/bootstrap-social.css')
         ;
 ?>
-<form class="form-signup" role="form" method="POST">
+<form class="form-signin" role="form" method="POST" action="{{ url.get(['for' : 'signup']) }}">
     <h2 class="form-signup-heading">Please sign up</h2>
     <input type="email" class="form-control" placeholder="Email address" name="email" required autofocus>
-    <input type="password" class="form-control" placeholder="Password" name="password" required>
-    <input type="password" class="form-control" placeholder="Re-type password" name="password" required>
+    <input type="password" class="form-control" placeholder="Password" name="raw_password" required>
+    <input type="password" class="form-control" placeholder="Re-type password" name="repassword" required>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 
     <a href="{{ linkedinUri }}" class="btn btn-block btn-social btn-linkedin">
@@ -27,4 +36,6 @@
         <i class="fa fa-facebook"></i>
         Sign up with Facebook
     </a>
+
+    <a href="{{ url.get(['for': 'login']) }}">Have account?</a>
 </form>

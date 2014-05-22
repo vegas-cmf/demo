@@ -10,17 +10,10 @@
  * file that was distributed with this source code.
  */
  
-namespace Home\Controllers\Frontend;
+namespace User\Services\Mailer;
 
-use Vegas\Mvc\Controller\ControllerAbstract;
 
-/**
- * Class HomeController
- * @package Home\Controllers\Frontend
- */
-class HomeController extends ControllerAbstract
+class SignUp 
 {
-    public function indexAction()
-    {
-    }
-} 
+
+}
