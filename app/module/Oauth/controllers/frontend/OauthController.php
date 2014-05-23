@@ -12,6 +12,7 @@
 namespace Oauth\Controllers\Frontend;
 use User\Services\Exception\SignUpFailedException;
 use Vegas\Security\Authentication\Exception\IdentityNotFoundException;
+use Vegas\Security\OAuth\Exception\FailedAuthorizationException;
 
 /**
  * Class AuthController
@@ -33,12 +34,17 @@ class OauthController extends \Vegas\Mvc\Controller\ControllerAbstract
         $oauth = $this->serviceManager->getService('oauth:oauth');
         $oauth->initialize();
 
-        $token = $oauth->authorize($serviceName);
-        $identity = $oauth->getIdentity($serviceName);
         try {
-            $oauth->authenticate($serviceName, $token, $identity);
-            return $this->response->redirect(array('for' => 'root'))->send();
+            $oauth->authorize($serviceName);
+        } catch(FailedAuthorizationException $ex) {
+            $this->flashSession->message('error', $ex->getMessage());
+        }
 
+        try {
+            $identity = $oauth->getIdentity($serviceName);
+            $oauth->authenticate($identity);
+
+            return $this->response->redirect(array('for' => 'root'))->send();
         } catch (IdentityNotFoundException $ex) {
             $this->flashSession->message('error', $ex->getMessage());
         } catch (SignUpFailedException $ex) {

@@ -12,16 +12,25 @@
  
 namespace Oauth\models;
 
-
+/**
+ * Class BaseUser
+ * @package Oauth\models
+ */
 class BaseUser extends \Auth\Models\BaseUser
 {
     private $oAuthServiceDetails = array();
 
+    /**
+     * @param $details
+     */
     public function setOAuthServiceDetails($details)
     {
         $this->oAuthServiceDetails = $details;
     }
 
+    /**
+     * @return array
+     */
     public function getAttributes()
     {
         $attributes = parent::getAttributes();

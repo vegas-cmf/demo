@@ -32,8 +32,8 @@ return array(
 
     'oauth' =>  array(
         'linkedin'  =>  array(
-            'key'   =>  '77vrwtb3qaiq8y',
-            'secret'    =>  'xRFH1mvEwQez6Uvm',
+            'key'   =>  '77yxzhmmzdj0xg',
+            'secret'    =>  'WgSxkb1I8yovu0T1',
             'redirect_uri' => '/oauth/linkedin',
             'scopes' => array(
                 \Vegas\Security\OAuth\Service\Linkedin::SCOPE_FULL_PROFILE,
@@ -42,8 +42,8 @@ return array(
             )
         ),
         'facebook'  =>  array(
-            'key'   =>  '1451737385070448',
-            'secret'    =>  '54046a53e2d13fc32e387039c0d3203a',
+            'key'   =>  '641315079294877',
+            'secret'    =>  '149317069d91ad668831b3db8f65457e',
             'redirect_uri' => '/oauth/facebook',
             'scopes' => array(
                 \Vegas\Security\OAuth\Service\Facebook::SCOPE_EMAIL,
@@ -55,8 +55,8 @@ return array(
             )
         ),
         'google'  =>  array(
-            'key'    =>  '559999790295-8l0dmppvrtd4qrfonu8bdnjm94db3qd3.apps.googleusercontent.com',
-            'secret'   =>  '8jz78cLHV2a9_X4ZzrTKK5Lo',
+            'key'    =>  '772598645983-djivugpe83m3og9rt87u3bfqooue9n7m.apps.googleusercontent.com',
+            'secret'   =>  'krX1s6vsNTXAS-t0_FUIjDi6',
             'redirect_uri' => '/oauth/google',
             'scopes' => array(
                 \Vegas\Security\OAuth\Service\Google::SCOPE_EMAIL,

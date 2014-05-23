@@ -47,6 +47,11 @@
             {{ flash.output() }}
             {{ content() }}
 
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Thanks for using <a href="http://vegas.amsterdam-standard.pl">Vegas CMF</a>.</p>
+                </div>
+            </div>
         </div>
 
     </div>

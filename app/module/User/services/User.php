@@ -19,15 +19,25 @@ use User\Services\Exception\UserAlreadyExistsException;
 use Vegas\DI\Service\ModelProxyAbstract;
 use Phalcon\DI\InjectionAwareInterface;
 
+/**
+ * Class User
+ * @package User\Services
+ */
 class User extends ModelProxyAbstract implements InjectionAwareInterface
 {
     use \Vegas\DI\InjectionAwareTrait;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->model = new UserModel();
     }
 
+    /**
+     *
+     */
     public function setupEventsManager()
     {
         $eventsManager = $this->di->get('eventsManager');
@@ -36,6 +46,11 @@ class User extends ModelProxyAbstract implements InjectionAwareInterface
         $this->di->set('eventsManager', $eventsManager);
     }
 
+    /**
+     * @param array $data
+     * @return bool
+     * @throws Exception\UserAlreadyExistsException
+     */
     public function validate(array $data)
     {
         $email = $data['email'];
@@ -47,19 +62,23 @@ class User extends ModelProxyAbstract implements InjectionAwareInterface
         return true;
     }
 
+    /**
+     * @param UserModel $userModel
+     * @return bool
+     */
     public function create(UserModel $userModel)
     {
         $this->setupEventsManager();
-
         $this->validate($userModel->toArray());
-
         $result = $userModel->save();
-
         $this->di->get('eventsManager')->fire('user:afterSignUp', array('user' => $userModel));
 
         return $result;
     }
 
+    /**
+     * @return array
+     */
     public function findWithIdAsKey() 
     {
         $preparedUsers = [];
@@ -70,12 +89,22 @@ class User extends ModelProxyAbstract implements InjectionAwareInterface
 
         return $preparedUsers;
     }
-    
+
+    /**
+     * @param $query
+     * @return array
+     */
     public function getUsers($query)
     {
         return UserModel::find($query);
     }
-    
+
+    /**
+     * @param $id
+     * @param bool $throwException
+     * @return \Phalcon\Mvc\Collection
+     * @throws \Vegas\Exception
+     */
     public function retrieveById($id, $throwException=false)
     {
         $user = UserModel::findById($id);
@@ -87,6 +116,9 @@ class User extends ModelProxyAbstract implements InjectionAwareInterface
         return $user;
     }
 
+    /**
+     * @return array
+     */
     public function getForMultiSelect()
     {
         $usersForMultiSelect = [];

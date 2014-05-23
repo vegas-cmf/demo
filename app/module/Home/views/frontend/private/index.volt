@@ -1,24 +1,9 @@
-<div class="inner cover">
+<div style="margin-top:150px" class="inner cover">
     <h1 class="cover-heading">Some private stuff</h1>
 
     {% if identity is defined %}
     <p>
-        Logged in as {{ identity.getEmail() }} | <a href="{{ url.get(['for' : 'logout']) }}">Logout</a>
+        Logged in as {{ identity.getFirst_name() }} {{ identity.getLast_name() }} ({{ identity.getEmail() }}) | <a href="{{ url.get(['for' : 'logout']) }}">Logout</a>
     </p>
     {% endif %}
-    <pre>
-        {{ identityDbg }}
-    </pre>
-    <pre>
-        {{ oauthIdentity }}
-    </pre>
-    <pre>
-        {{ token }}
-    </pre>
-</div>
-
-<div class="mastfoot">
-    <div class="inner">
-        <p>Thanks for using <a href="http://vegas.amsterdam-standard.pl">Vegas CMF</a>.</p>
-    </div>
 </div>

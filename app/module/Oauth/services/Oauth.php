@@ -15,28 +15,56 @@ namespace Oauth\Services;
 use User\Models\User;
 use User\Services\Exception\SignUpFailedException;
 use Vegas\Security\Authentication\Exception\IdentityNotFoundException;
+use Vegas\Security\Authentication\Identity as AuthIdentity;
 use Vegas\Security\OAuth\Exception\ServiceNotFoundException;
 use Vegas\Security\OAuth\Identity;
+use Vegas\Security\OAuth\Identity as OAuthIdentity;
 use Vegas\Security\OAuth\ServiceAbstract;
 
+/**
+ * Class Oauth
+ * @package Oauth\Services
+ */
 class Oauth implements \Phalcon\DI\InjectionAwareInterface
 {
     use \Vegas\DI\InjectionAwareTrait;
 
+    /**
+     * @var array
+     */
     protected $config = array();
 
+    /**
+     * @var array
+     */
     protected $oAuthServices = array();
 
+    /**
+     * @var null
+     */
     protected $oAuth = null;
 
-    public function initialize()
+    /**
+     * Initializes service from provided configuration
+     *
+     * @param null $config
+     * @return $this
+     */
+    public function initialize($config = null)
     {
-        $this->config = $this->getDI()->get('config')->oauth->toArray();
+        if (null == $config) {
+            $this->config = $this->getDI()->get('config')->oauth->toArray();
+        } else {
+            $this->config = $config;
+        }
         $this->setupServices();
 
         return $this;
     }
 
+    /**
+     * Setups oAuth services from configuration
+     */
     protected function setupServices()
     {
         $this->oAuth = new \Vegas\Security\OAuth($this->di);
@@ -57,6 +85,8 @@ class Oauth implements \Phalcon\DI\InjectionAwareInterface
     }
 
     /**
+     * Returns the instance of indicated service
+     *
      * @param $serviceName
      * @return ServiceAbstract
      * @throws \Vegas\Security\OAuth\Exception\ServiceNotFoundException
@@ -70,20 +100,35 @@ class Oauth implements \Phalcon\DI\InjectionAwareInterface
         return $this->oAuthServices[$serviceName];
     }
 
+    /**
+     * Returns the prepared authorization uri to indicated oAuth Service
+     *
+     * @param $serviceName
+     * @return mixed
+     */
     public function getAuthorizationUri($serviceName)
     {
         $service = $this->getService($serviceName);
-
         return $service->getAuthorizationUri();
     }
 
+    /**
+     * Authorizes
+     *
+     * @param $serviceName
+     * @return \OAuth\Common\Http\Uri\UriInterface|string
+     */
     public function authorize($serviceName)
     {
         $service = $this->getService($serviceName);
-
         return $service->authorize();
     }
 
+    /**
+     * Remove session for indicated service
+     *
+     * @param null $serviceName
+     */
     public function logout($serviceName = null)
     {
         if (null == $serviceName) {
@@ -97,6 +142,12 @@ class Oauth implements \Phalcon\DI\InjectionAwareInterface
         }
     }
 
+    /**
+     * Returns identity with accessToken for indicated service
+     *
+     * @param $serviceName
+     * @return mixed
+     */
     public function getIdentity($serviceName)
     {
         $service = $this->getService($serviceName);
@@ -106,19 +157,46 @@ class Oauth implements \Phalcon\DI\InjectionAwareInterface
         return $identity;
     }
 
-    public function authenticate($serviceName, $token, Identity $identity)
+    /**
+     * Authenticates authorized user
+     *
+     * @param Identity $oauthIdentity
+     * @throws \User\Services\Exception\SignUpFailedException
+     */
+    public function authenticate(Identity $oauthIdentity)
     {
         $auth = $this->di->get('serviceManager')->getService('auth:auth');
         try {
-            $auth->authenticateByEmail($identity->getEmail());
+            $authIdentity = $auth->authenticateByEmail($oauthIdentity->getEmail());
         } catch (IdentityNotFoundException $ex) {
             $userService = $this->di->get('serviceManager')->getService('user:user');
             $userModel = new User();
-            $userModel->writeAttributes($identity->toArray());
+
+            //store identity values without id, service and accessToken
+            $identityValues = $oauthIdentity->toArray();
+            unset($identityValues['id']);
+            unset($identityValues['service']);
+            unset($identityValues['accessToken']);
+            $userModel->writeAttributes($identityValues);
+
+            //try to create new account
             if (!$userService->create($userModel)) {
                 throw new SignUpFailedException();
             }
-            $auth->authenticateByEmail($identity->getEmail());
+
+            $authIdentity = $auth->authenticateByEmail($oauthIdentity->getEmail());
         }
+        $this->afterAuthentication($authIdentity, $oauthIdentity);
+    }
+
+    /**
+     * Adds oAuth identity for authenticated user
+     *
+     * @param AuthIdentity $authIdentity
+     * @param Identity $oauthIdentity
+     */
+    private function afterAuthentication(AuthIdentity $authIdentity, OAuthIdentity $oauthIdentity)
+    {
+        \Oauth\Models\Identity::addUserIdentity($authIdentity->getId(), $oauthIdentity);
     }
 }

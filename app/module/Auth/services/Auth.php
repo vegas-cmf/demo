@@ -16,10 +16,21 @@ use Auth\Models\BaseUser;
 use User\Models\User;
 use Vegas\Security\OAuth\Exception\ServiceNotFoundException;
 
+/**
+ * Class Auth
+ * @package Auth\Services
+ */
 class Auth implements \Phalcon\DI\InjectionAwareInterface
 {
     use \Vegas\DI\InjectionAwareTrait;
 
+    /**
+     * Authenticates user by email and password
+     *
+     * @param $email
+     * @param $password
+     * @throws \Vegas\Security\Authentication\Exception\IdentityNotFoundException
+     */
     public function login($email, $password) 
     {
         $user = BaseUser::findFirst(array(array('email' => $email)));
@@ -29,6 +40,9 @@ class Auth implements \Phalcon\DI\InjectionAwareInterface
         $this->di->get('auth')->authenticate($user, $password);
     }
 
+    /**
+     * Ends session
+     */
     public function logout() 
     {
         $identity = $this->di->get('auth')->getIdentity();
@@ -39,10 +53,16 @@ class Auth implements \Phalcon\DI\InjectionAwareInterface
             } catch (ServiceNotFoundException $ex) {
             }
         }
-        $auth = $this->di->get('auth');
-        $auth->logout();
+        $this->di->get('auth')->logout();
     }
 
+    /**
+     * Authenticates user by e-mail address
+     *
+     * @param $email
+     * @return mixed
+     * @throws \Vegas\Security\Authentication\Exception\IdentityNotFoundException
+     */
     public function authenticateByEmail($email)
     {
         $user = BaseUser::findFirst(array(array('email' => $email)));
@@ -50,8 +70,27 @@ class Auth implements \Phalcon\DI\InjectionAwareInterface
             throw new \Vegas\Security\Authentication\Exception\IdentityNotFoundException();
         }
         $adapter = new \Vegas\Security\Authentication\Adapter\Email($this->di->get('userPasswordManager'));
-        $adapter->setSessionStorage($this->di->get('sessionManager')->createScope('auth'));
+        $adapter->setSessionStorage($this->obtainSessionScope());
         $auth = new \Vegas\Security\Authentication($adapter);
-        return $auth->authenticate($user, null);
+        $auth->authenticate($user, null);
+        return $auth->getIdentity();
+    }
+
+    /**
+     * Obtains session scope for authentication
+     * It safely checks if the session scope with 'auth' name already exists
+     *
+     * @return mixed
+     */
+    private function obtainSessionScope()
+    {
+        $sessionManager = $this->di->get('sessionManager');
+        if (!$sessionManager->scopeExists('auth')) {
+            $sessionScope = $sessionManager->createScope('auth');
+        } else {
+            $sessionScope = $sessionManager->getScope('auth');
+        }
+
+        return $sessionScope;
     }
 }
