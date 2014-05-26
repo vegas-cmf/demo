@@ -10,5 +10,6 @@
   'MongoServiceProvider' => '/var/www/vegas/vegas-demo/app/services/MongoServiceProvider.php',
   'PasswordManagerServiceProvider' => '/var/www/vegas/vegas-demo/app/services/PasswordManagerServiceProvider.php',
   'AssetsServiceProvider' => '/var/www/vegas/vegas-demo/app/services/AssetsServiceProvider.php',
+  'AuthDashboardServiceProvider' => '/var/www/vegas/vegas-demo/app/services/AuthDashboardServiceProvider.php',
   'CollectionManagerServiceProvider' => '/var/www/vegas/vegas-demo/app/services/CollectionManagerServiceProvider.php',
 );

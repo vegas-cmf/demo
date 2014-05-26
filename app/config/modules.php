@@ -4,6 +4,11 @@
     'className' => 'Home\\Module',
     'path' => '/var/www/vegas/vegas-demo/app/module/Home/Module.php',
   ),
+  'Dashboard' => 
+  array (
+    'className' => 'Dashboard\\Module',
+    'path' => '/var/www/vegas/vegas-demo/app/module/Dashboard/Module.php',
+  ),
   'Auth' => 
   array (
     'className' => 'Auth\\Module',

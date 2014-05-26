@@ -19,7 +19,9 @@ return array(
              * @see https://github.com/phalcon/cphalcon/issues/546
              */
             'layoutsDir'    =>  '../../../../app/layouts'
-        )
+        ),
+
+        'hostname'    =>  'vegasdemo.com'
     ),
 
     'environment'    => 'development',
@@ -27,6 +29,9 @@ return array(
     'auth'  =>  array(
         'auth'  =>  array(
             'route'    =>  'login'
+        ),
+        'authDashboard'  =>  array(
+            'route'    =>  'dashboard_login'
         )
     ),
 
