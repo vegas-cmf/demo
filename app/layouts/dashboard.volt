@@ -45,6 +45,7 @@
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Help</a></li>
+                <li class="active"><a href="{{ url.get(['for' : 'dashboard_logout']) }}">Logout</a></li>
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="Search...">

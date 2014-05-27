@@ -38,6 +38,7 @@
                     <ul class="nav masthead-nav">
                         <li><a href="/">Home</a></li>
                         <li><a href="/private">Private</a></li>
+                        <li><a href="http://test.vegasdemo.com">Dashboard</a></li>
                         <li><a href="https://bitbucket.org/amsdard/vegas-demo">Features</a></li>
                         <li><a href="mailto:vegas@amsterdam-standard.pl">Contact</a></li>
                     </ul>

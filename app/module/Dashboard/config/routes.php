@@ -27,5 +27,19 @@ return array(
         'params' => array(
             'hostname'  =>  'test.vegasdemo.com'
         )
+    ),
+    'dashboard_logout' =>  array(
+        'route' =>  '/logout',
+        'paths' => array(
+            'module'    =>  'Dashboard',
+            'controller'    =>  'Frontend\Auth',
+            'action'    =>  'logout',
+
+            'auth'      =>  false
+        ),
+        'type' => 'static',
+        'params' => array(
+            'hostname'  =>  'test.vegasdemo.com'
+        )
     )
 );

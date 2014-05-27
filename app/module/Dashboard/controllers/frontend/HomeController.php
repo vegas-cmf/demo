@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
  
-namespace Home\Controllers\Frontend;
+namespace Dashboard\Controllers\Frontend;
 
 use Vegas\Mvc\Controller\ControllerAbstract;
 
