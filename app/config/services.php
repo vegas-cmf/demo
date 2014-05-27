@@ -1,14 +1,15 @@
-<?php return array (
-  'AuthServiceProvider' => '/var/www/vegas/vegas-demo/app/services/AuthServiceProvider.php',
-  'ViewCacheServiceProvider' => '/var/www/vegas/vegas-demo/app/services/ViewCacheServiceProvider.php',
-  'SessionServiceProvider' => '/var/www/vegas/vegas-demo/app/services/SessionServiceProvider.php',
-  'SessionManagerServiceProvider' => '/var/www/vegas/vegas-demo/app/services/SessionManagerServiceProvider.php',
-  'ServiceManagerServiceProvider' => '/var/www/vegas/vegas-demo/app/services/ServiceManagerServiceProvider.php',
-  'I18nServiceProvider' => '/var/www/vegas/vegas-demo/app/services/I18nServiceProvider.php',
-  'FlashServiceProvider' => '/var/www/vegas/vegas-demo/app/services/FlashServiceProvider.php',
-  'UrlServiceProvider' => '/var/www/vegas/vegas-demo/app/services/UrlServiceProvider.php',
-  'MongoServiceProvider' => '/var/www/vegas/vegas-demo/app/services/MongoServiceProvider.php',
-  'PasswordManagerServiceProvider' => '/var/www/vegas/vegas-demo/app/services/PasswordManagerServiceProvider.php',
-  'AssetsServiceProvider' => '/var/www/vegas/vegas-demo/app/services/AssetsServiceProvider.php',
-  'CollectionManagerServiceProvider' => '/var/www/vegas/vegas-demo/app/services/CollectionManagerServiceProvider.php',
+<?php 
+return array (
+    'AuthServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/AuthServiceProvider.php',
+    'ViewCacheServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/ViewCacheServiceProvider.php',
+    'SessionServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/SessionServiceProvider.php',
+    'SessionManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/SessionManagerServiceProvider.php',
+    'ServiceManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/ServiceManagerServiceProvider.php',
+    'I18nServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/I18nServiceProvider.php',
+    'FlashServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/FlashServiceProvider.php',
+    'UrlServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/UrlServiceProvider.php',
+    'MongoServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/MongoServiceProvider.php',
+    'PasswordManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/PasswordManagerServiceProvider.php',
+    'AssetsServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/AssetsServiceProvider.php',
+    'CollectionManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/CollectionManagerServiceProvider.php',
 );

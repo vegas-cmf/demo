@@ -50,15 +50,15 @@ return array(
 //        )
 //    ),
 //
-//    'admin/user' => array(
-//        '/admin/user/:action/:params',
-//        array(
-//            'module' => 'User',
-//            'controller' => 'Backend\User',
-//            'action' => 1,
-//            'params' => 2
-//        )
-//    ),
+    'admin/user' => array(
+        'route' =>  '/admin/user/:action/:params',
+        'paths' => array(
+            'module' => 'User',
+            'controller' => 'Backend\User',
+            'action' => 1,
+            'params' => 2
+        )
+    ),
 //
 //    'admin/user/upload' => array(
 //        '/admin/user/upload',
