@@ -1,0 +1,107 @@
+@main: #fff;
+@radius: 7px;
+
+#component-manager {
+    background: @main;
+    border-color: darken(@main, 5%);
+    height: 61px;
+}
+
+#cm-menu-bar {
+    text-align: left;
+    h2 {
+        color: #000;
+        margin: 0;
+        font-size: 18px;
+        font-weight: normal;
+    }
+    ul {
+        list-style-type: none;
+        float: left;
+        margin: 0; padding: 0;
+        li {
+            position: relative;
+            ul {
+                background: #fff;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                border: 1px solid rgba(0,0,0,.2);
+                display: none;
+                left: 0; top: 20px;
+                padding: 6px 0;
+                position: absolute;
+                width: 250px;
+                li {
+                    display: block;
+                    a {
+                        cursor: pointer;
+                        padding: 5px 12px;
+                    }
+                }
+            }
+        }
+        li:hover {
+            ul {
+                display: block;
+            }
+        }
+    }
+    a {
+        color: #000;
+    }
+    div {
+        float: right;
+    }
+}
+
+#cm-controls {
+    ul {
+        background: none;
+        border: 0;
+        margin-top: 4px;
+        
+        -webkit-border-radius: @radius;
+        -moz-border-radius: @radius;
+        border-radius: @radius;
+
+        li {
+            border: 0;
+            -webkit-border-radius: @radius;
+            -moz-border-radius: @radius;
+            border-radius: @radius;
+        }
+        a {
+            color: darken(@main, 65%);
+            padding: 10px 10px 5px;
+            -webkit-border-radius: @radius;
+            -moz-border-radius: @radius;
+            border-radius: @radius;
+        } 
+        a:hover {
+            background: darken(@main,5%);
+            color: darken(@main, 85%);
+        }
+    } 
+} 
+
+@media (max-width: 767px) {    
+    #component-manager {
+        height: 41px;
+    }
+    #cm-controls {
+        padding-left: 3px;
+        ul {
+            margin-top: 3px;
+            li {
+
+            }
+            a {
+                min-width: 45px;
+                padding: 4px 0 2px;
+            } 
+            a:hover {
+
+            }
+        } 
+    } 
+
+}
