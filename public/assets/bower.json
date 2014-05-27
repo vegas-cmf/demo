@@ -1,0 +1,21 @@
+{
+  "name": "vegas-demo",
+  "version": "0.0.1",
+  "authors": [
+    "slawek <slawomir.zytko@gmail.com>"
+  ],
+  "description": "Vegas CMF Demo",
+  "license": "MIT",
+  "homepage": "vegas-cmf.github.io",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies" : {
+      "bootstrap-social" : "*"
+  }
+}
