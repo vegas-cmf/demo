@@ -11,6 +11,7 @@ return array(
             'auth'  =>  false
         ),
         'type' => 'static'
+
     ),
     'logout' => array(
         'route' => '/logout',
