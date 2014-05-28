@@ -43,7 +43,8 @@ class Component extends \Vegas\DI\Service\ComponentAbstract
                 
         foreach($components as $i => $component) {                        
             $renderer = new \Vegas\DI\Component\Renderer($this->di->get('view'));
-            $renderer = $renderer->setModuleName($component->module)
+            $renderer = $renderer->setMode($mode)
+                                 ->setModuleName($component->module)
                                  ->setTemplateName(strtolower($component->class) . '/view');
             $class = "\\{$component->module}\\Components\\{$component->class}";
             $components[$i]->instance = new $class($renderer); 

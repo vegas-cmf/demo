@@ -14,12 +14,20 @@ namespace Vegas\DI\Component;
 class Renderer implements \Vegas\DI\Service\Component\RendererInterface // implements RendererInterface
 {
     protected $view;
+    protected $mode;
     protected $moduleName;
     protected $templateName;
     
     public function __construct(\Phalcon\Mvc\View $view = null)
     {
         $this->view = $view;
+    }
+    
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
+        
+        return $this;
     }
     
     public function setModuleName($name)
@@ -38,6 +46,7 @@ class Renderer implements \Vegas\DI\Service\Component\RendererInterface // imple
     
     public function render($params = array())
     {
+        $this->view->mode = $this->mode;
         return $this->view->partial($this->getServiceViewPath(), $params);
     }
     

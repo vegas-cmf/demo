@@ -94,8 +94,7 @@ class ToolsController extends Controller\Crud
             foreach($this->request->getPost('ids') as $rank => $id) {
                 $manager->updatePosition($id, $level, $position, $rank);
             }
-        }
-                
+        }                
         $this->view->disable();
     }
         
