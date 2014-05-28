@@ -2,13 +2,14 @@
 /**
  * This file is part of Vegas package
  *
- * @author Adrian Malik <adrian.malik.89@gmail.com>
+ * @author Frank Broersen <frank@pitgroup.nl>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * @homepage https://bitbucket.org/amsdard/vegas-phalcon
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Page\Controllers\Backend;
 
 use Vegas\Mvc\Controller;
@@ -57,16 +58,6 @@ class PageController extends Controller\Crud
         };
     }
     
-    private function redirectAfterSuccess()
-    {
-        return function() {
-            $this->response->redirect(array(
-                'for'    => 'admin/page', 
-                'action' => 'index', 
-            ));
-        };
-    }
-    
     /**
      * @ACL(name='modal', description='After action modal display')
      */
@@ -80,9 +71,7 @@ class PageController extends Controller\Crud
      */
     public function indexAction()
     {
-        $pages = \Page\Models\Page::find();
-
-        $this->view->pages = $pages;
+        $this->view->pages = \Page\Models\Page::find();
     }
 }
 

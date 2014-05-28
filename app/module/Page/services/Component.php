@@ -16,8 +16,7 @@ namespace Page\Services;
 class Component extends \Vegas\DI\Service\ComponentAbstract
 {
     protected function setUp($params = array())
-    {
-        
+    {        
         if(is_array($params)) {
             $position = $params[0];
             $level    = isset($params[1]) ? $params[1] : 'PAGE';

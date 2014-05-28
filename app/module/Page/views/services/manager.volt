@@ -42,7 +42,7 @@
         <a class="cm-logo" href="/?t=logo"></a>
         <div id="cm-controls" class="clearfix">           
             <ul class="action-crud">
-                <li><a data-action="componentManager.insertAction"><i class="fa fa-pencil"></i><b>{{ i18n._('new') }}</b></a></li>
+                <li><a data-action="componentManager.insertAction"><i class="fa fa-pencil"></i><b>{{ i18n._('insert') }}</b></a></li>
             </ul>   
             <ul class="action-crud">
                 <li><a data-action="componentManager.updateAction"><i class="fa fa-cogs"></i><b>{{ i18n._('update') }}</b></a></li>

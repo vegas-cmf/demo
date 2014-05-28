@@ -12,4 +12,7 @@ return array (
     'PasswordManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/PasswordManagerServiceProvider.php',
     'AssetsServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/AssetsServiceProvider.php',
     'CollectionManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/CollectionManagerServiceProvider.php',
+    
+    'ComponentManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/ComponentManagerServiceProvider.php',
+    'PreviewManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/PreviewManagerServiceProvider.php',
 );

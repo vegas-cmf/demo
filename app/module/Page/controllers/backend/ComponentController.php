@@ -33,7 +33,6 @@ class ComponentController extends Controller\Crud
         
         // create generic form
         $this->dispatcher->getEventsManager()->attach(Controller\Crud\Events::AFTER_READ, $this->createComponentForm());
-        // $this->dispatcher->getEventsManager()->attach(Controller\Crud\Events::AFTER_DO_READ, $this->createComponentForm());
         
         // window reload via js
         $this->dispatcher->getEventsManager()->attach(Controller\Crud\Events::AFTER_CREATE, $this->redirectAfterSuccess());
@@ -72,14 +71,9 @@ class ComponentController extends Controller\Crud
      */
     private function createComponentForm()
     {
-        return function() {                           
-            $this->component = $this->view->record->getComponent();                  
-            $form = new \Page\Forms\Component();
-            foreach($this->component->getElements() as $element) {
-                $element->setDefault($this->view->record->getParam($element->getName()));
-                $element->setName('params_' . $element->getName());
-                $form->add($element);
-            }
+        return function() {
+            $form = $this->di->get('componentManager')
+                             ->createForm($this->view->record);
             $this->scaffolding->setForm($form);
         };
     } 

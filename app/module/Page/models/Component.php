@@ -29,9 +29,11 @@ class Component extends CollectionAbstract
         return 'vegas_components';
     }
     
-    public function save()
+    public function save($parseParams = true)
     {
-        $this->parseParams();
+        if($parseParams) {
+            $this->parseParams();
+        }
         return parent::save();
     }
     
@@ -49,14 +51,13 @@ class Component extends CollectionAbstract
     
     public static function createStatic($name,$params = array())
     {
+        // module:class
         $parts = explode(':',$name);
-        $module = $parts[0];
-        $class  = $parts[1];
         
         // create the component        
         $component = new self;
-        $component->module   = $module;
-        $component->class    = $class;
+        $component->module   = $parts[0];
+        $component->class    = $parts[1];
         $component->level    = $params['level'];
         $component->page_id  = new \MongoId($params['page_id']);
         $component->position = (int)$params['position'];
@@ -72,14 +73,14 @@ class Component extends CollectionAbstract
         
         // create the component
         $component->rank     = $rank;
-        $component->save();
+        $component->save(false);
         
         return $component;        
     }
     
     protected function getRank($position, $id)
     {
-        $components = \Component\Models\Component::find(array(array(
+        $components = Component::find(array(array(
             "page_id"   => $this->page_id,
             "level"     => $this->level,
             "position"  => $this->position,
