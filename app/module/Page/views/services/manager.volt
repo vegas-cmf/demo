@@ -78,8 +78,11 @@ function componentManagerRedirect() {
             {% endfor %}
         </select>
     </label>
+    <a href="logout">
+        {{ i18n._('Logout') }}
+    </a>
     <a href="{{ url.get(['for':'admin/page','action':'editor','params':'activate']) }}?page={{ page.slug }}">
-        {{ i18n._('Open the page editor') }}
+        {{ i18n._('Edit page') }}
     </a>
 </div>
 {% endif %}
@@ -95,34 +98,7 @@ function componentManagerRedirect() {
 <div id="component-messages" style="display: none;">{{ flash.output() }}</div>
 
 <div id="component-manager">
-    
-    {#
-    <div class="cm-container clearfix">
-        <div id="cm-menu-bar">
-            <h2>{{page.name}}</h2>
-            <ul>
-                <li>
-                    <a>Page</a>
-                    <ul>
-                        <li><a>Share page...</a></li>
-                    </ul>
-                    <ul>
-                        <li><a>New</a></li>
-                        <li><a>Open</a></li>
-                        <li><a>Rename</a></li>
-                        <li><a>Make a copy</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div>
-                {% if identity is defined %}
-                    {{ identity.getEmail() }}
-                {% endif %}
-            </div>
-        </div>
-    </div>
-    #}
-    
+        
     <div class="cm-container clearfix">
         <a class="cm-logo" href="/?t=logo"></a>
         <div id="cm-controls" class="clearfix">           

@@ -21,7 +21,7 @@
     {% endfor %}
          
     {% if mode == 'edit' and (limit == 0 or limit > components|length) %}
-    <span class="component-hint{% if components and not forced %} hide{% endif %}">
+    <span class="component-hint{% if components %} hide{% endif %}{#% if components and not forced %} hide{% endif %#}">
         <div class="component" data-action="componentManager.createAction" data-icon="fa fa-plus-circle">
             <div class="component-overlay">
                 <div><i class="fa fa-plus-circle"></i></div>

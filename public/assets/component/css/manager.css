@@ -333,7 +333,6 @@ body {
 }
     .component-is-sorting .component-list {
         border: 2px dashed #666;
-        min-height: 50px;
         min-height: 80px;
         margin: 0 0 10px;
     }
@@ -346,7 +345,8 @@ body {
         }
     .component {
         margin: 0 0 10px; /* do we need this? */
-        min-height: 50px;
+        /*min-height: 50px;*/
+        min-height: 0;
         /*overflow: hidden;*/
         position: relative;
     }    
@@ -423,9 +423,24 @@ body {
             z-index: 2001;
             opacity: 1;
         } 
-    .component-hint {
-        
+    .component-hint .component {
+        display: block;
+        min-height: 30px;
     }
+    .component-hint.has-components {
+        display: block;
+        height: 20px;
+        margin-bottom: 10px;
+    }
+        .component-hint.has-components .component,
+        .component-hint.has-components .component-overlay {
+            min-height: 20px;
+            height: 20px;
+            font-size: 10px;
+        }
+        .component-hint.has-components .component-overlay div {
+            margin: -10px 0 0;
+        }
 
 #component-overlay {
     background: rgba(255,255,255,.85);

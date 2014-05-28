@@ -16,6 +16,11 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-12">        
+        {{ component.render(11) }}
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-3 col-sm-6">
@@ -29,6 +34,12 @@
     </div>
     <div class="col-md-3 col-sm-6">
         {{ component.render(7) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">        
+        {{ component.render(12) }}
     </div>
 </div>
 
