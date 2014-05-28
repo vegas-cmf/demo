@@ -1,6 +1,8 @@
 <?php
 return array(
     'application' => array(
+        'environment'    => 'development',
+
         'servicesDir'   =>  APP_ROOT . '/app/services/',
         'configDir'     => dirname(__FILE__) . DIRECTORY_SEPARATOR,
         'libraryDir'     => APP_ROOT . DIRECTORY_SEPARATOR . 'lib/',
@@ -23,8 +25,6 @@ return array(
 
         'hostname'    =>  'vegasdemo.com'
     ),
-
-    'environment'    => 'development',
 
     'auth'  =>  array(
         'auth'  =>  array(
