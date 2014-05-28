@@ -49,14 +49,11 @@ class Component extends \Vegas\DI\Service\ComponentAbstract
             $components[$i]->instance = new $class($renderer); 
         }
         
-        $compiled = false; //$_SERVER['REMOTE_ADDR'] == '127.0.0.1';
-        
         return array(
             'allowed'    => isset($config['allow'])  ? $config['allow'] : false,
             'blocked'    => isset($config['block'])  ? $config['block'] : false,
             'limit'      => isset($config['limit'])  ? $config['limit'] : 0,
             'forced'     => isset($config['forced']) ? $config['forced'] : false,
-            'compiled'   => $compiled,
             'position'   => $position,
             'level'      => $level,
             'mode'       => $mode,

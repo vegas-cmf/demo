@@ -1,0 +1,17 @@
+<?php return array (
+  'AssetsServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/AssetsServiceProvider.php',
+  'AuthDashboardServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/AuthDashboardServiceProvider.php',
+  'AuthServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/AuthServiceProvider.php',
+  'CollectionManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/CollectionManagerServiceProvider.php',
+  'ComponentManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/ComponentManagerServiceProvider.php',
+  'FlashServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/FlashServiceProvider.php',
+  'I18nServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/I18nServiceProvider.php',
+  'MongoServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/MongoServiceProvider.php',
+  'PasswordManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/PasswordManagerServiceProvider.php',
+  'PreviewManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/PreviewManagerServiceProvider.php',
+  'ServiceManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/ServiceManagerServiceProvider.php',
+  'SessionManagerServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/SessionManagerServiceProvider.php',
+  'SessionServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/SessionServiceProvider.php',
+  'UrlServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/UrlServiceProvider.php',
+  'ViewCacheServiceProvider' => '/Users/fbroersen/Sites/vegas-cmf-core-latest/vegas-demo/vegas-demo/app/services/ViewCacheServiceProvider.php',
+);

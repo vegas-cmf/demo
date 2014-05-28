@@ -354,12 +354,15 @@ body {
             margin-bottom: 0;
         }
         .component-sortable-placeholder {
-            border: 2px dashed #666;
-            margin: 0 0 10px; /* do we need this? */
+            border: 1px dashed #666;
+            margin: 5px !important;
         }
         .component-sorting {
+            border: 1px dashed #666;
             cursor: move;
             max-height: 50px;
+            overflow: hidden;
+            margin: 5px !important;
         }
     .component-label {
         background-color: #666;

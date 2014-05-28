@@ -87,16 +87,16 @@ class ToolsController extends Controller\Crud
      */
     public function positionAction()
     {
-        $level    = (string) $this->request->getPost("level");
-        $position = (int)    $this->request->getPost("position");
-        
-        $manager  = $this->di->get('componentManager');
-        
-        foreach($this->request->getPost('ids') as $rank => $id) {
-            $manager->updatePosition($id, $level, $position, $rank);
+        if(is_array($this->request->getPost('ids'))) {
+            $level    = (string) $this->request->getPost("level");
+            $position = (int)    $this->request->getPost("position");
+            $manager  = $this->di->get('componentManager');
+            foreach($this->request->getPost('ids') as $rank => $id) {
+                $manager->updatePosition($id, $level, $position, $rank);
+            }
         }
-        
-        die('OK');
+                
+        $this->view->disable();
     }
         
     /**
