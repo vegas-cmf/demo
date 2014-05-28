@@ -441,6 +441,52 @@ body {
         .component-hint.has-components .component-overlay div {
             margin: -10px 0 0;
         }
+        
+#component-editor-settings {
+    border: 1px solid #000; border-right: 0;
+    position: fixed; right: 0; top: 200px;
+    background: #333;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}    
+    #component-editor-settings a { 
+        cursor: pointer;
+        display: block;
+        height: 30px;
+        width: 40px;
+            -webkit-border-top-left-radius: 5px;
+            -webkit-border-bottom-left-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+    }    
+    #component-editor-settings a i {
+        margin: 8px auto 0;
+    }
+    #component-editor-settings a.active i.inactive ,
+    #component-editor-settings a i.active {
+        display: none;
+    }
+    #component-editor-settings a.active,
+    #component-editor-settings a:hover { 
+        background: #000;
+    }   
+    #component-editor-settings a.active i.active {
+        display: inline-block;
+    } 
+        
+.remove-components-margin .component-list {
+    min-height: 0;
+}
+.remove-components-margin .component,
+.remove-components-margin .component-hint.has-components {
+    margin-bottom: 0;
+}        
 
 #component-overlay {
     background: rgba(255,255,255,.85);

@@ -10,21 +10,18 @@ jQuery.noConflict();
     helper.dialog.init();
     helper.keyboard.init();
     
-    /* start loading */
-    // helper.loading.show();
-    
-    /* init managers */
-    componentManager.init();    
-    helper.modal.init();
+    /* layout and controls */
     layout.init();  
-    controls.init();    
+    controls.init();   
+    
+    /* init more helpers */   
+    helper.modal.init();
+    helper.settings.init(); 
+    
+    /* and the managers */
+    componentManager.init(); 
     pageManager.init();
     
-    /* finish loading... *
-    setTimeout(function(){
-        helper.loading.hide();
-    },500);*/
-
     debug.setMode('development');
     
     // move to a position via the hash (#500 == 500px)

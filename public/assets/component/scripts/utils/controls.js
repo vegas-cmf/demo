@@ -4,7 +4,7 @@ var controls = {
     element: false,
     init: function(){
         this.element = jQuery('#cm-controls').find('ul');
-        this.menu     = jQuery('#component-dropdown');
+        this.menu    = jQuery('#component-dropdown');
         this.bindEvents();
         this.show('default');
     },

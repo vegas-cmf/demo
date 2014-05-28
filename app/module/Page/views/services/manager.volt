@@ -162,6 +162,13 @@ function componentManagerRedirect() {
 {# component-body #}
 </div>
 
+<div id="component-editor-settings">
+    <a data-toggle="remove-components-margin" data-name="editor-margin" alt="{{ i18n._('Toggle margins') }}" title="{{ i18n._('Toggle margins') }}">
+        <i class="fa fa-compress active" alt="{{ i18n._('Hide margins') }}"></i>
+        <i class="fa fa-expand inactive" alt="{{ i18n._('Show margins') }}"></i>
+    </a>
+</div>
+
 <div id="component-quick-list">
     <ul>
         {% for component in components %}

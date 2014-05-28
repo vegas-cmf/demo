@@ -18,6 +18,30 @@ helper.url = {
     }
 };
 
+/* settings */
+helper.settings = {
+    init: function(){
+        jQuery('#component-editor-settings').on('click','a',function(event){
+            var element = jQuery(this);
+            if(!element.hasClass('active')) {
+                element.addClass('active');
+                layout.body.addClass(element.data('toggle'));
+                helper.cookie.set(element.data('name'),element.data('toggle'));
+            } else {
+                element.removeClass('active');
+                layout.body.removeClass(element.data('toggle'));
+                helper.cookie.set(element.data('name'),false);
+            }
+        });
+        jQuery('#component-editor-settings').find('a').each(function(){
+            var element = jQuery(this);
+            if(helper.cookie.get(element.data('name')) === element.data('toggle')) {
+                element.click();
+            }
+        });
+    }
+};
+
 /* loading overlay + image */
 helper.loading = {
     element: false,
