@@ -52,19 +52,10 @@ class PageController extends Controller\Crud
     private function displayAfterSuccess()
     {
         return function() {
-            // @TODO: display view 
-            echo '<script>parent.window.location = "/' . $this->scaffolding->getRecord()->slug . '?vegas-component-manager";</script>';
+            echo '<script>parent.window.location = "/' . $this->scaffolding->getRecord()->slug . '";</script>';
             exit;
         };
     }
-    
-    /**
-     * @ACL(name='modal', description='After action modal display')
-     */
-    public function modalAction($params = '')
-    {        
-        
-    }  
 
     /**
      * @ACL(name='index', description='List static pages')
@@ -73,5 +64,19 @@ class PageController extends Controller\Crud
     {
         $this->view->pages = \Page\Models\Page::find();
     }
+    
+    /**
+     * @ACL(name='modal', description='Actvate page builder')
+     */
+    public function editorAction($do = 'activate')
+    {        
+        if($do == 'activate') {
+            $this->session->set('mode','edit');
+        } else {
+            $this->session->set('mode','view');
+        }
+        return $this->response->redirect($this->request->getQuery('page'));
+    }  
+    
 }
 

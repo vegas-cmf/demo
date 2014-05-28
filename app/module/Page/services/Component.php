@@ -27,14 +27,10 @@ class Component extends \Vegas\DI\Service\ComponentAbstract
         
         $config = isset($params[2]) ? $params[2] : array();
         
+        $session = $this->di->get('session');
         $mode = 'view';
-        if(isset($_GET['vegas-component-manager']))
-            $mode = 'edit';
-        
-        // if ($this->di->get('authUser')->isAuthenticated()) {
-        //    $userId = $this->di->get('authUser')->getIdentity()->getId();
-        //    $isFaved = Component::isUrlFaved($url, $userId);
-        // }
+        if($session->has('mode'))
+            $mode = $session->get('mode');
         
         $page_id = $this->di->get('page')->_id;
         

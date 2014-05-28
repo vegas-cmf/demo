@@ -22,32 +22,27 @@ class Manager extends \Vegas\DI\Service\ComponentAbstract
     
     protected function setUp($params = array())
     {        
-        $mode = 'view';
-        if(isset($_GET['vegas-component-manager']))
-            $mode = 'edit';
-                
         $identity = $this->di->get('auth')->getIdentity();
+        $session = $this->di->get('session');
         
-        $action  = $params['action'];
-        $page_id = $this->di->get('page')->_id;
-        
-        if( $mode === 'edit' && ! $this->pages) {
-            $this->pages      = Page::find();
+        $mode = 'view';
+        if($identity && $session->has('mode'))
+            $mode = $session->get('mode');
+                
+        if( $identity && ! $this->pages) {
+            $this->pages      = Page::find(array(
+                'sort' => array('name' => 1)    // @TODO make this a page tree
+            ));
             $this->components = Preview::find(array(
                 'sort' => array('name' => 1)
             ));
         }
         
-        // if ($this->di->get('authUser')->isAuthenticated()) {
-        //    $userId = $this->di->get('authUser')->getIdentity()->getId();
-        //    $isFaved = Component::isUrlFaved($url, $userId);
-        // }
-        
         return array(
             'identity'          => $identity,
-            'action'            => $action,
             'mode'              => $mode,
-            'page_id'           => $page_id,
+            'action'            => $params['action'],
+            'page_id'           => $this->di->get('page')->_id,
             'pages'             => $this->pages,
             'components'        => $this->components,
         );

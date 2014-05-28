@@ -11,7 +11,7 @@ jQuery.noConflict();
     helper.keyboard.init();
     
     /* start loading */
-    helper.loading.show();
+    // helper.loading.show();
     
     /* init managers */
     componentManager.init();    
@@ -20,10 +20,10 @@ jQuery.noConflict();
     controls.init();    
     pageManager.init();
     
-    /* finish loading... */
+    /* finish loading... *
     setTimeout(function(){
         helper.loading.hide();
-    },500);
+    },500);*/
 
     debug.setMode('development');
     
@@ -40,6 +40,6 @@ jQuery.noConflict();
         debug.feedback($(this).text());
     });
         
-    debug.feedback(i18n.get('feedback.load'));
+    // debug.feedback(i18n.get('feedback.load'));
 
 })(jQuery);

@@ -38,7 +38,9 @@ var componentManager = {
             }
         });
         this.body.mouseenter(function(){
-            layout.hideOverlay();
+            if( ! layout.locked ) {
+                layout.hideOverlay();
+            }
         });
         /*
         jQuery('#component-quick-list').sortable({

@@ -7,7 +7,8 @@ return array(
             'controller' => 'Frontend\Private',
             'action' => 'index',
 
-            'auth'  =>  'auth'
-        )
+            'auth'  =>  'auth',
+        ),
+        'type' => 'static',
     )
 );

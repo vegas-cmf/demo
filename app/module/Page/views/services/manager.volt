@@ -1,4 +1,89 @@
 
+{% if action == 'load' and mode != 'edit' and identity %}
+<style>
+#component-editor-menubar {
+    background: #fff;
+    color: #404040;
+    height: 32px;
+    text-decoration: none;
+    text-shadow: none;
+    text-align: left;
+    overflow: hidden;
+    width: 100%;
+}
+    #component-editor-menubar img {
+        display: block;
+        float: left;
+        padding: 3px 0 0 5px;
+    }
+    #component-editor-menubar label {
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        display: block;
+        float: left;
+        height: 100%;
+        margin: 0 15px 0 5px;
+        padding: 0 10px;
+        width: 40%;
+    }
+    #component-editor-menubar span {
+        display: none;
+        float: left;
+        font-weight: normal;
+        padding: 5px 15px 0 15px;
+    }
+    #component-editor-menubar select {
+        display: block;
+        font-weight: normal;
+        padding: 6px 12px;
+        margin: 5px 0 0;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+    }
+    #component-editor-menubar a {
+        background: #efefef;
+        border-left: 1px solid #ccc;
+        cursor: pointer;
+        color: #404040;
+        float: right;
+        font-size: 12px;
+        height: 32px;
+        padding: 8px 10px;
+        position: relative;
+        text-shadow: none;
+        text-decoration: none;
+        z-index: 2050;
+    }
+    #component-editor-menubar a:hover {
+        background: #ccc;
+    }
+</style>
+<script>
+function componentManagerRedirect() {
+    var select = document.getElementById("component-manager-select"),
+        url    = select.options[select.selectedIndex].getAttribute('value');
+    window.location = url;
+}    
+</script>
+<div id="component-editor-menubar">
+    <img src="/assets/component/img/logo.png" height="26" />
+    <label>
+        <span>{{ i18n._('Page:') }}</span> 
+        <select id="component-manager-select" onchange="componentManagerRedirect();">
+            {% for link in pages %}
+            <option {% if page._id is link._id %}selected{% endif %} value="/{{ link.slug }}">{{ link.name }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <a href="{{ url.get(['for':'admin/page','action':'editor','params':'activate']) }}?page={{ page.slug }}">
+        {{ i18n._('Open the page editor') }}
+    </a>
+</div>
+{% endif %}
+
 {% if action == 'load' and mode == 'edit' %}
 {# <link rel="stylesheet" type="text/css" href="component/vendor/jquery-ui-1.10.4.custom/css/smoothness/jquery-ui-1.10.4.custom.css" /> #}
 <link rel="stylesheet" type="text/css" href="assets/component/vendor/font-awesome-4.0.3/css/font-awesome.css" />
@@ -74,7 +159,7 @@
                 <li><a data-action="controls.cancel" alt="{{ i18n._('ESC') }}" title="{{ i18n._('ESC') }}"><i class="fa fa-reply"></i><b>{{ i18n._('cancel') }}</b></a></li>
             </ul>
             <ul class="action-default">
-                <li><a href="{{ url.get() }}"><i class="fa fa-share"></i><b>{{ i18n._('close') }}</b></a></li>
+                <li><a href="{{ url.get(['for':'admin/page','action':'editor','params':'deactivate']) }}?page={{ page.slug }}"><i class="fa fa-share"></i><b>{{ i18n._('close') }}</b></a></li>
             </ul>
         </div>
     </div>
@@ -85,7 +170,7 @@
         <li><strong>{{ i18n._('PAGE LIST') }}</strong></li>      
         
         {% for link in pages %}
-        <li><a {% if page._id is link._id %}class=active{% endif %} href="/{{ link.slug }}?vegas-component-manager">{{ link.name }}</a></li>
+        <li><a {% if page._id is link._id %}class=active{% endif %} href="/{{ link.slug }}">{{ link.name }}</a></li>
         {% endfor %}
     </ul>
     <a id="component-page-list-logo" href="#"><img src="/assets/component/img/logo.png" /></a>
@@ -186,21 +271,4 @@ var urls = {
 };
 </script>
 <script src="assets/component/main.js"></script>
-{% endif %}
-
-{% if action == 'init' and mode != 'edit' %}
-<style>
-#component-editor-opener {
-    background: #efefef;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    color: #404040;
-    display: block;
-    padding: 5px 10px;
-    position: absolute;
-    top: 5px; right: 5px;
-    z-index: 2050;
-}
-</style>
-<a href="{{ page.slug }}?vegas-component-manager" id="component-editor-opener">{{ i18n._('EDIT THIS PAGE') }}</a>
 {% endif %}
