@@ -35,3 +35,7 @@ vendor/
 composer.lock
 composer.phar
 public/assets/vendor/*
+
+app/config/services.php
+app/config/modules.php
+app/config/mailers.php
