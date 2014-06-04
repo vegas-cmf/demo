@@ -88,7 +88,7 @@ class Component extends CollectionAbstract
        
         $rank   = 0;
         $return = false;
-        foreach($components as $i => $component) {
+        foreach($components as $component) {
             if($component->_id == $id) {
                 if($position == 'before') {
                     $return = $rank;
