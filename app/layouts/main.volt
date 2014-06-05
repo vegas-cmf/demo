@@ -26,6 +26,11 @@
     </head>
 
     <body>
+        
+        {% set counter   = 1 %}
+        {% set component = serviceManager.getService('page:component') %}
+        {% set manager = serviceManager.getService('page:manager') %}
+        {{ manager.render(['action':'load']) }}
 
         <div class="site-wrapper">
 
@@ -63,6 +68,9 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+        
+        {# make sure this is below below #}
+        {{ manager.render(['action':'init']) }}
         
     </body>
 </html>

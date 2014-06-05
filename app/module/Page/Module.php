@@ -18,26 +18,4 @@ class Module extends \Vegas\Mvc\ModuleAbstract
         $this->namespace = __NAMESPACE__;
         $this->dir = __DIR__;
     }
-    
-    public function registerServices($di)
-    {
-        $this->registerScaffolding($di);        
-        $this->registerPage($di);
-        parent::registerServices($di);
-    }
-
-    protected function registerPage($di)
-    {
-        $di->set('page',function() use($di) {
-            $router  = $di->get('router');
-            $matched = $router->getMatchedRoute();
-            return \Page\Models\Page::findOrCreateByRoute($matched);    
-        }, true);
-    }
-    
-    protected function registerScaffolding($di)
-    {
-        $adapter = new \Vegas\DI\Scaffolding\Adapter\Mongo;
-        $di->set('scaffolding', new \Vegas\DI\Scaffolding($adapter));
-    }
 }
