@@ -2,7 +2,7 @@
 /**
  * This file is part of Vegas package
  *
- * @author Slawomir Zytko <slawomir.zytko@gmail.com>
+ * @author Arkadiusz Ostrycharz <arkadiusz.ostrycharz@gmail.com>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * @homepage https://bitbucket.org/amsdard/vegas-phalcon
  *
@@ -12,21 +12,25 @@
 
 use Phalcon\DiInterface;
 use Vegas\DI\ServiceProviderInterface;
-use Phalcon\Mvc\Url as UrlResolver;
 
-class UrlServiceProvider implements ServiceProviderInterface
+
+/**
+ * Class PageServiceProvider
+ */
+class PageServiceProvider implements ServiceProviderInterface
 {
-    const SERVICE_NAME = 'url';
+    const SERVICE_NAME = 'page';
 
     /**
      * {@inheritdoc}
      */
     public function register(DiInterface $di)
     {
-        $di->set(self::SERVICE_NAME, function() use ($di) {
-            $url = new UrlResolver();
-            $url->setBaseUri($di->get('config')->application->baseUri);
-            return $url;
+        $di->set(self::SERVICE_NAME,function() use($di) {
+            $router  = $di->get('router');
+            $matched = $router->getMatchedRoute();
+            return \Page\Models\Page::findOrCreateByRoute($matched);    
         }, true);
+        return $di;
     }
 } 

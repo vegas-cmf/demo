@@ -2,7 +2,7 @@
 /**
  * This file is part of Vegas package
  *
- * @author Slawomir Zytko <slawomir.zytko@gmail.com>
+ * @author Arkadiusz Ostrycharz <arkadiusz.ostrycharz@gmail.com>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * @homepage https://bitbucket.org/amsdard/vegas-phalcon
  *
@@ -12,21 +12,21 @@
 
 use Phalcon\DiInterface;
 use Vegas\DI\ServiceProviderInterface;
-use Phalcon\Mvc\Url as UrlResolver;
+use Vegas\DI\Scaffolding;
 
-class UrlServiceProvider implements ServiceProviderInterface
+/**
+ * Class ScaffoldingServiceProvider
+ */
+class ScaffoldingServiceProvider implements ServiceProviderInterface
 {
-    const SERVICE_NAME = 'url';
+    const SERVICE_NAME = 'scaffolding';
 
     /**
      * {@inheritdoc}
      */
     public function register(DiInterface $di)
     {
-        $di->set(self::SERVICE_NAME, function() use ($di) {
-            $url = new UrlResolver();
-            $url->setBaseUri($di->get('config')->application->baseUri);
-            return $url;
-        }, true);
+        $adapter = new Scaffolding\Adapter\Mongo();
+        $di->set(self::SERVICE_NAME, new Scaffolding($adapter), true);
     }
 } 
