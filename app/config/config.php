@@ -16,11 +16,7 @@ return array(
         'view'  => array(
             'cacheDir'  =>  APP_ROOT . '/cache/',
             'layout'    =>  'main',
-            /**
-             * app/layouts must be relative in vendor/Vegas/Mvc/ModuleAbstract
-             * @see https://github.com/phalcon/cphalcon/issues/546
-             */
-            'layoutsDir'    =>  '../../../../app/layouts'
+            'layoutsDir'    =>  APP_ROOT. '/app/layouts/'
         ),
 
         'hostname'    =>  'vegasdemo.com'
