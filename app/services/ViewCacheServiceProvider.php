@@ -37,5 +37,13 @@ class ViewCacheServiceProvider implements \Vegas\DI\ServiceProviderInterface {
             return $cache;
         });
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array();
+    }
 }
  

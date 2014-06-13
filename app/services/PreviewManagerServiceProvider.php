@@ -26,4 +26,12 @@ class PreviewManagerServiceProvider implements ServiceProviderInterface
             return new \Vegas\Page\Preview\Manager();
         }, true);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array();
+    }
 } 

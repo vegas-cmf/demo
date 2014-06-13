@@ -27,4 +27,15 @@ class CollectionManagerServiceProvider implements ServiceProviderInterface
             return new \Phalcon\Mvc\Collection\Manager();
         }, true);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array(
+            MongoServiceProvider::SERVICE_NAME,
+            CollectionManagerServiceProvider::SERVICE_NAME
+        );
+    }
 } 

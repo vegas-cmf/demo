@@ -32,4 +32,12 @@ class AuthDashboardServiceProvider implements ServiceProviderInterface
             return $auth;
         }, true);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array();
+    }
 } 

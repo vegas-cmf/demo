@@ -33,4 +33,12 @@ class SessionServiceProvider implements ServiceProviderInterface
             return $sessionAdapter;
         }, true);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array();
+    }
 } 

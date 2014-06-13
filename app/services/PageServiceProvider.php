@@ -33,4 +33,15 @@ class PageServiceProvider implements ServiceProviderInterface
         }, true);
         return $di;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array(
+            MongoServiceProvider::SERVICE_NAME,
+
+        );
+    }
 } 

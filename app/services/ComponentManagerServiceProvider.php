@@ -26,4 +26,12 @@ class ComponentManagerServiceProvider implements ServiceProviderInterface
             return new \Vegas\Page\Component\Manager();
         }, true);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array();
+    }
 } 

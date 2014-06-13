@@ -26,4 +26,12 @@ class ServiceManagerServiceProvider implements ServiceProviderInterface
     {
         $di->set(self::SERVICE_NAME, '\Vegas\DI\ServiceManager', true);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array();
+    }
 } 

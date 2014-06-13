@@ -27,4 +27,12 @@ class PasswordManagerServiceProvider implements ServiceProviderInterface
         $di->set(self::SERVICE_NAME, '\Vegas\Security\Password\Adapter\Standard', true);
 
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array();
+    }
 } 

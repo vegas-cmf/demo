@@ -29,4 +29,12 @@ class UrlServiceProvider implements ServiceProviderInterface
             return $url;
         }, true);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array();
+    }
 } 

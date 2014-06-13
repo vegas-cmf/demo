@@ -32,6 +32,13 @@ class I18nServiceProvider implements ServiceProviderInterface
                 'directory' => APP_ROOT.'/lang'
             ));
         });
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array();
     }
 } 

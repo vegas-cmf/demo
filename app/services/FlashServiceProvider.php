@@ -31,6 +31,13 @@ class FlashServiceProvider implements ServiceProviderInterface
                 'notice' => 'alert alert-info',
             ));
         });
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return array();
     }
 }
