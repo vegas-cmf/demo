@@ -30,18 +30,18 @@ class Youtube extends ComponentAbstract {
     public function getElements()
     {
         $code = new \Phalcon\Forms\Element\Text('code');
-        $code->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $code->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $code->setLabel('Youtube url or code');        
         $code->setAttribute('placeholder','http://www.youtube.com/watch?v=sEW-Qb2qqA8');
         
         $width = new \Phalcon\Forms\Element\Text('width');
-        $width->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $width->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $width->setLabel('Width');        
         $width->setAttribute('placeholder','560');
         $width->setAttribute('value','560');
         
         $height = new \Phalcon\Forms\Element\Text('height');
-        $height->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $height->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $height->setLabel('Height');        
         $height->setAttribute('placeholder','315');
         $height->setAttribute('value','315');

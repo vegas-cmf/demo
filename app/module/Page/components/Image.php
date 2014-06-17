@@ -18,7 +18,7 @@ class Image extends ComponentAbstract {
     public function getElements()
     {
         $source = new \Phalcon\Forms\Element\Text('source');
-        $source->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $source->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $source->setLabel('Source');        
         return array($source);
     }

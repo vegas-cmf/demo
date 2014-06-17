@@ -18,19 +18,19 @@ class Work extends ComponentAbstract {
     public function getElements()
     {
         $title = new \Phalcon\Forms\Element\Text('title');
-        $title->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $title->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $title->setLabel('Title');  
         
         $description = new \Phalcon\Forms\Element\Textarea('description');
-        $description->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $description->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $description->setLabel('Description'); 
         
         $image = new \Phalcon\Forms\Element\Text('image');
-        $image->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $image->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $image->setLabel('Image');   
         
         $position = new \Phalcon\Forms\Element\Select('position');
-        $position->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $position->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $position->setLabel('Image position'); 
         $position->setOptions(array(
             'left'   => 'Left',

@@ -18,7 +18,7 @@ class Spacer extends ComponentAbstract {
     public function getElements()
     {
         $source = new \Phalcon\Forms\Element\Text('size');
-        $source->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $source->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $source->setLabel('How high?');        
         return array($source);        
     }

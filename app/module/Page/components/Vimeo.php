@@ -23,18 +23,18 @@ class Vimeo extends ComponentAbstract {
     public function getElements()
     {
         $code = new \Phalcon\Forms\Element\Text('code');
-        $code->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $code->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $code->setLabel('Vimeo url or code');        
         $code->setAttribute('placeholder','http://vimeo.com/92179785');
         
         $width = new \Phalcon\Forms\Element\Text('width');
-        $width->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $width->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $width->setLabel('Width');        
         $width->setAttribute('placeholder','500');
         $width->setAttribute('value','500');
         
         $height = new \Phalcon\Forms\Element\Text('height');
-        $height->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $height->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $height->setLabel('Height');        
         $height->setAttribute('placeholder','281');
         $height->setAttribute('value','281');

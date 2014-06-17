@@ -18,7 +18,7 @@ class Texteditor extends ComponentAbstract {
     public function getElements()
     {
         $source = new \Phalcon\Forms\Element\Textarea('text');
-        $source->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $source->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $source->setLabel('Contents');        
         return array($source);        
     }

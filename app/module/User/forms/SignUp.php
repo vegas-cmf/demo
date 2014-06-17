@@ -15,8 +15,8 @@ use Vegas\Forms\Form,
     Phalcon\Forms\Element\Password,
     Phalcon\Forms\Element\Text,
     Vegas\Forms\Element\Cloneable,
-    Phalcon\Validation\Validator\Email as EmailValidator,
-    Phalcon\Validation\Validator\PresenceOf,
+    Vegas\Validation\Validator\Email as EmailValidator,
+    Vegas\Validation\Validator\PresenceOf,
     Vegas\Forms\Element\Upload;
     
 class SignUp extends Form

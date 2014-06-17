@@ -18,11 +18,11 @@ class Text extends ComponentAbstract {
     public function getElements()
     {
         $source = new \Phalcon\Forms\Element\Text('text');
-        $source->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $source->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $source->setLabel('Text');   
         
         $type = new \Phalcon\Forms\Element\Select('type');
-        $type->addValidator(new \Phalcon\Validation\Validator\PresenceOf());
+        $type->addValidator(new \Vegas\Validation\Validator\PresenceOf());
         $type->setLabel('type'); 
         $type->setOptions(array(
             'p'  => 'Paragraph',
