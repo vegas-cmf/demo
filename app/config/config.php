@@ -11,6 +11,7 @@ return array(
         'libraryDir'     => APP_ROOT . DIRECTORY_SEPARATOR . 'lib/',
         'pluginDir'      => APP_ROOT . '/app/plugins/',
         'moduleDir'      => APP_ROOT . '/app/module/',
+        'tasksDir'      => APP_ROOT . '/app/tasks/',
         'baseUri'        => '/',
         'language'       => 'nl_NL',
         'subModules'    =>  array(
@@ -71,6 +72,15 @@ return array(
 
     'mongo' => array(
         'db' => 'vegas_demo',
+    ),
+
+    'database' => array(
+        "adapter"  => "Mysql",
+        "host"     => "localhost",
+        "username" => "root",
+        "port" => 3306,
+        "password" => "root",
+        "dbname"     => "vegas_project",
     ),
 
     'session' => array(

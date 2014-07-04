@@ -31,3 +31,8 @@
     </a>
     <a href="{{ url.get(['for': 'signup']) }}">Don't have account?</a>
 </form>
+
+<div class="alert alert-info" style="text-align:center">
+    Use the following CLI task to create an user account: <br />
+    <i>php cli/cli.php app:user create -e=user@vegasdemo.com -p=p@$$w0rD -n="Vegas User"</i>
+</div>
