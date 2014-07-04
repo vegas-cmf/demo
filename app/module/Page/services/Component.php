@@ -4,7 +4,7 @@
  *
  * @author Frank Broersen <frank@pitgroup.nl>
  * @copyright Amsterdam Standard Sp. Z o.o.
- * @homepage https://bitbucket.org/amsdard/vegas-phalcon
+ * @homepage http://vegas-cmf.github.io
  *
  * Component render service
  * 

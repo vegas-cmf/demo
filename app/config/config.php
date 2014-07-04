@@ -1,4 +1,7 @@
 <?php
+
+define('HOSTNAME', 'vegasdemo.com');
+
 return array(
     'application' => array(
         'environment'    => 'development',
@@ -11,7 +14,7 @@ return array(
         'baseUri'        => '/',
         'language'       => 'nl_NL',
         'subModules'    =>  array(
-            'frontend', 'backend'
+            'frontend', 'backend', 'dashboard'
         ),
         'view'  => array(
             'cacheDir'  =>  APP_ROOT . '/cache/',
