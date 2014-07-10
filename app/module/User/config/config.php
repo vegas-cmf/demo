@@ -1,6 +1,6 @@
 <?php
-return new \Phalcon\Config(array(
+return array(
     'user' => array(
         'uploadUrl' => '/admin/user/upload'
     )
-));
+);
