@@ -24,8 +24,18 @@ class MongoServiceProvider implements ServiceProviderInterface
     public function register(DiInterface $di)
     {
         $di->set(self::SERVICE_NAME, function() use ($di) {
-            $mongo = new \MongoClient();
-            return $mongo->selectDb($di->get('config')->mongo->db);
+            $mongoConfig = $di->get('config')->mongo->toArray();
+
+            //obtains hostname
+            if (isset($mongoConfig['host'])) {
+                $hostname = 'mongodb://' . $mongoConfig['host'];
+            } else {
+                $hostname = 'mongodb://localhost';
+            }
+            unset($mongoConfig['host']);
+
+            $mongo = new \MongoClient($hostname, $mongoConfig);
+            return $mongo->selectDb($mongoConfig['db']);
         }, true);
     }
 

@@ -72,6 +72,7 @@ return array(
 
     'mongo' => array(
         'db' => 'vegas_demo',
+        'host' => 'localhost'
     ),
 
     'database' => array(
