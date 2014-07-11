@@ -32,7 +32,7 @@ return array(
             'layoutsDir'    =>  APP_ROOT. '/app/layouts/'
         ),
 
-        'hostname'    =>  'vegasdemo.com'
+        'hostname'    =>  HOSTNAME
     ),
 
     'mongo' => array(

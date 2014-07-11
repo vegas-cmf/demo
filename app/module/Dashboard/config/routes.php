@@ -11,7 +11,7 @@ return array(
         ),
         'type' => 'static',
         'params' => array(
-            'hostname'  =>  'test.vegasdemo.com'
+            'hostname'  =>  'test.' . HOSTNAME
         )
     ),
     'dashboard_login' =>  array(
@@ -25,7 +25,7 @@ return array(
         ),
         'type' => 'static',
         'params' => array(
-            'hostname'  =>  'test.vegasdemo.com'
+            'hostname'  =>  'test.' . HOSTNAME
         )
     ),
     'dashboard_logout' =>  array(
@@ -39,7 +39,7 @@ return array(
         ),
         'type' => 'static',
         'params' => array(
-            'hostname'  =>  'test.vegasdemo.com'
+            'hostname'  =>  'test.' . HOSTNAME
         )
     )
 );
