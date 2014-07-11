@@ -50,6 +50,8 @@ class ExampleController extends Crud
 
     public function indexAction()
     {
-        $this->view->articles = Article::find();
+        $lang = !$this->dispatcher->getParam('lang') ? DEFAULT_LANG : $this->dispatcher->getParam('lang');
+
+        $this->view->articles = Article::find(array(array('lang' => $lang)));
     }
 } 
