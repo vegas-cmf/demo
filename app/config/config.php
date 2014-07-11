@@ -5,7 +5,7 @@ define('DEFAULT_LANG', 'nl');
 
 return array(
     'application' => array(
-        'environment'    => 'development',
+        'environment'    => \Vegas\Constants::DEV_ENV,
 
         'lang' => DEFAULT_LANG,
         //list of available languages
@@ -40,7 +40,7 @@ return array(
         'host' => 'localhost'
     ),
 
-    'database' => array(
+    'db' => array(
         "adapter"  => "Mysql",
         "host"     => "localhost",
         "username" => "root",

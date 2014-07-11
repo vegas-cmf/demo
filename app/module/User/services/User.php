@@ -13,11 +13,11 @@
 
 namespace User\Services;
 
-use User\Models\User As UserModel;
+use Phalcon\DI\InjectionAwareInterface;
+use User\Models\User as UserModel;
 use User\Services\EventsManager\SignUp;
 use User\Services\Exception\UserAlreadyExistsException;
 use Vegas\DI\Service\ModelProxyAbstract;
-use Phalcon\DI\InjectionAwareInterface;
 
 /**
  * Class User

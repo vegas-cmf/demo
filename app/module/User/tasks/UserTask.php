@@ -10,6 +10,8 @@
  * file that was distributed with this source code.
  */ 
 
+namespace User\Tasks;
+
 class UserTask extends \Vegas\Cli\Task
 {
 

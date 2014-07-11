@@ -11,10 +11,10 @@
  */
 namespace Page\Forms;
 
-use Phalcon\Forms\Form;
 use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Textarea;
-    
+use Phalcon\Forms\Form;
+
 class Page extends Form
 {
     /**

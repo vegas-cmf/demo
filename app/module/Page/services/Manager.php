@@ -11,8 +11,8 @@
  */
 namespace Page\Services;
 
-use Page\Models\Page,
-    Page\Models\Preview;
+use Page\Models\Page;
+use Page\Models\Preview;
 
 class Manager extends \Vegas\DI\Service\ComponentAbstract
 {    

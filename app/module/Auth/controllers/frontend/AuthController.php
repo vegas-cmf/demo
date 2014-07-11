@@ -10,7 +10,6 @@
  * file that was distributed with this source code.
  */
 namespace Auth\Controllers\Frontend;
-use Vegas\Security\OAuth\Exception\ServiceNotFoundException;
 
 /**
  * Class AuthController

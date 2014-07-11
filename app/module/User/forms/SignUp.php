@@ -11,14 +11,14 @@
  */
 namespace User\Forms;
 
-use Vegas\Forms\Form,
-    Phalcon\Forms\Element\Password,
-    Phalcon\Forms\Element\Text,
-    Vegas\Forms\Element\Cloneable,
-    Vegas\Validation\Validator\Email as EmailValidator,
-    Vegas\Validation\Validator\PresenceOf,
-    Vegas\Forms\Element\Upload;
-    
+use Phalcon\Forms\Element\Password;
+use Phalcon\Forms\Element\Text;
+use Vegas\Forms\Element\Cloneable;
+use Vegas\Forms\Element\Upload;
+use Vegas\Forms\Form;
+use Vegas\Validation\Validator\Email as EmailValidator;
+use Vegas\Validation\Validator\PresenceOf;
+
 class SignUp extends Form
 {
     public function initialize()

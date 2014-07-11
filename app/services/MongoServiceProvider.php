@@ -11,8 +11,8 @@
  */
 
 use Phalcon\DiInterface;
-use Vegas\DI\ServiceProviderInterface;
 use Phalcon\Mvc\Url as UrlResolver;
+use Vegas\DI\ServiceProviderInterface;
 
 class MongoServiceProvider implements ServiceProviderInterface
 {
@@ -32,10 +32,13 @@ class MongoServiceProvider implements ServiceProviderInterface
             } else {
                 $hostname = 'mongodb://localhost';
             }
+            if (isset($mongoConfig['port'])) {
+                $hostname .= ':' . $mongoConfig['port'];
+            }
             unset($mongoConfig['host']);
 
             $mongo = new \MongoClient($hostname, $mongoConfig);
-            return $mongo->selectDb($mongoConfig['db']);
+            return $mongo->selectDb($mongoConfig['dbname']);
         }, true);
     }
 

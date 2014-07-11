@@ -13,7 +13,6 @@
 namespace User\Services\EventsManager;
 
 
-use Phalcon\Dispatcher;
 use Phalcon\Events\Event;
 
 class SignUp

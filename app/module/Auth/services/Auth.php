@@ -13,7 +13,6 @@
 namespace Auth\Services;
 
 use Auth\Models\BaseUser;
-use User\Models\User;
 use Vegas\Security\OAuth\Exception\ServiceNotFoundException;
 
 /**

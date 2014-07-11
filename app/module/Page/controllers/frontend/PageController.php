@@ -11,9 +11,9 @@
  */
 namespace Page\Controllers\Frontend;
 
-use Vegas\Mvc\Controller\ControllerAbstract,
-    Page\Models\Page,
-    Phalcon\Mvc\View;
+use Page\Models\Page;
+use Phalcon\Mvc\View;
+use Vegas\Mvc\Controller\ControllerAbstract;
 
 /**
  * Class PageController

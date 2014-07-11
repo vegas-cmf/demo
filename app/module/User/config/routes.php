@@ -21,35 +21,6 @@ return array(
         ),
         'type'  =>  'static'
     ),
-
-//    'user' => array(
-//        '/user/([a-z0-9]{24})',
-//        array(
-//            'module' => 'User',
-//            'controller' => 'Frontend\User',
-//            'action' => 'show',
-//            'id' => 1
-//        )
-//    ),
-//
-//    'my-account' => array(
-//        '/my-account',
-//        array(
-//            'module' => 'User',
-//            'controller' => 'Frontend\User',
-//            'action' => 'myAccount'
-//        )
-//    ),
-//
-//    'my-account/update' => array(
-//        '/my-account/update',
-//        array(
-//            'module' => 'User',
-//            'controller' => 'Frontend\User',
-//            'action' => 'update'
-//        )
-//    ),
-//
     'admin/user' => array(
         'route' =>  '/admin/user/:action/:params',
         'paths' => array(
@@ -58,14 +29,5 @@ return array(
             'action' => 1,
             'params' => 2
         )
-    ),
-//
-//    'admin/user/upload' => array(
-//        '/admin/user/upload',
-//        array(
-//            'module' => 'User',
-//            'controller' => 'Backend\User',
-//            'action' => 'upload'
-//        )
-//    )
+    )
 );

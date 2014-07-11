@@ -11,10 +11,9 @@
  */
 namespace Page\Controllers\Backend\Component;
 
-use \Vegas\Mvc\Controller;
-
-use Page\Models\Preview,
-    Page\Models\Component;
+use Page\Models\Component;
+use Page\Models\Preview;
+use Vegas\Mvc\Controller;
 
 /**
  * Class ToolsController

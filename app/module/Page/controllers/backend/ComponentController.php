@@ -11,7 +11,7 @@
  */
 namespace Page\Controllers\Backend;
 
-use \Vegas\Mvc\Controller;
+use Vegas\Mvc\Controller;
 
 /**
  * Class ComponentController

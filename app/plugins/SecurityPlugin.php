@@ -10,7 +10,6 @@
  * file that was distributed with this source code.
  */
 
-use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher;
 use Vegas\Security\Authentication;
 
