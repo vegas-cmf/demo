@@ -12,40 +12,7 @@
         "vendor-dir": "vendor/"
     },
     "homepage": "http://demo.vegas.com/",
-    "repositories": [
-        {
-            "type" : "git",
-            "url" : "https://bitbucket.org/amsdard/vegas-cmf-core.git"
-        },
-        {
-            "type" : "git",
-            "url" : "https://bitbucket.org/amsdard/vegas-cmf-core.git"
-        },
-        {
-            "type" : "git",
-            "url" : "https://bitbucket.org/amsdard/vegas-cmf-session.git"
-        },
-        {
-            "type" : "git",
-            "url" : "https://bitbucket.org/amsdard/vegas-cmf-auth.git"
-        },
-        {
-            "type" : "git",
-            "url" : "https://bitbucket.org/amsdard/vegas-cmf-oauth.git"
-        },
-        {
-            "type" : "git",
-            "url" : "https://bitbucket.org/amsdard/vegas-cmf-filter.git"
-        },
-        {
-            "type" : "git",
-            "url" : "https://bitbucket.org/amsdard/vegas-cmf-validation.git"
-        },
-        {
-            "type" : "git",
-            "url" : "https://bitbucket.org/amsdard/vegas-cmf-forms.git"
-        }
-    ],
+    "repositories": [],
     "minimum-stability" : "dev",
     "require": {
         "php": ">=5.4",
