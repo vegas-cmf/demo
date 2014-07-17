@@ -33,7 +33,7 @@ return array(
     ),
 
     'mongo' => array(
-        'db' => 'vegas_demo',
+        'dbname' => 'vegas_demo',
         'host' => 'localhost'
     ),
 

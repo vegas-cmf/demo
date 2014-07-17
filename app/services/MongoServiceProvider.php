@@ -35,10 +35,14 @@ class MongoServiceProvider implements ServiceProviderInterface
             if (isset($mongoConfig['port'])) {
                 $hostname .= ':' . $mongoConfig['port'];
             }
+            //removes options that are not allowed in MongoClient constructor
             unset($mongoConfig['host']);
+            unset($mongoConfig['port']);
+            $dbName = $mongoConfig['dbname'];
+            unset($mongoConfig['dbname']);
 
             $mongo = new \MongoClient($hostname, $mongoConfig);
-            return $mongo->selectDb($mongoConfig['dbname']);
+            return $mongo->selectDb($dbName);
         }, true);
     }
 
