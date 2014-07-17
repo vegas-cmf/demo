@@ -11,7 +11,6 @@
  */
 
 use Phalcon\DiInterface;
-use Phalcon\Mvc\Url as UrlResolver;
 use Vegas\DI\ServiceProviderInterface;
 
 class AuthDashboardServiceProvider implements ServiceProviderInterface
@@ -38,6 +37,7 @@ class AuthDashboardServiceProvider implements ServiceProviderInterface
     public function getDependencies()
     {
         return array(
+            SessionManagerServiceProvider::SERVICE_NAME,
             UserPasswordManagerServiceProvider::SERVICE_NAME
         );
     }

@@ -11,7 +11,6 @@
  */
 
 use Phalcon\DiInterface;
-use Phalcon\Mvc\Url as UrlResolver;
 use Vegas\DI\ServiceProviderInterface;
 
 class UserPasswordManagerServiceProvider implements ServiceProviderInterface
@@ -24,7 +23,6 @@ class UserPasswordManagerServiceProvider implements ServiceProviderInterface
     public function register(DiInterface $di)
     {
         $di->set(self::SERVICE_NAME, '\Vegas\Security\Password\Adapter\Standard', true);
-
     }
 
     /**

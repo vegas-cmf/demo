@@ -11,7 +11,6 @@
  */
 
 use Phalcon\DiInterface;
-use Phalcon\Mvc\Url as UrlResolver;
 use Vegas\DI\ServiceProviderInterface;
 
 class ServiceManagerServiceProvider implements ServiceProviderInterface
