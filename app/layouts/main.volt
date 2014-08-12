@@ -26,11 +26,6 @@
     </head>
 
     <body>
-        
-        {% set counter   = 1 %}
-        {% set component = serviceManager.getService('page:component') %}
-        {% set manager   = serviceManager.getService('page:manager') %}
-        {{ manager.render(['action':'load']) }}
 
         <div class="site-wrapper">
 
@@ -43,7 +38,7 @@
                             <ul class="nav masthead-nav">
                                 <li><a href="/">Home</a></li>
                                 <li><a href="/private">Private</a></li>
-                                <li><a href="https://bitbucket.org/amsdard/vegas-demo">Features</a></li>
+                                <li><a href="http://vegas-cmf.github.io/1.0/guide.html">Features</a></li>
                                 <li><a href="mailto:vegas@amsterdam-standard.pl">Contact</a></li>
                             </ul>
                         </div>
@@ -65,9 +60,5 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-        
-        {# make sure this is below below #}
-        {{ manager.render(['action':'init']) }}
-        
     </body>
 </html>
