@@ -19,13 +19,13 @@
         "ext-phalcon": ">=1.3.0,<2",
         "phalcon/devtools": "1.3.x-dev",
         "phalcon/incubator": "dev-master",
-        "vegas-cmf/core" : "dev-master",
-        "vegas-cmf/session" : "dev-master",
-        "vegas-cmf/auth" : "dev-master",
-        "vegas-cmf/oauth" : "dev-master",
-        "vegas-cmf/filter" : "dev-master",
-        "vegas-cmf/validation" : "dev-master",
-        "vegas-cmf/forms" : "dev-master"
+        "vegas-cmf/core" : "1.0.*",
+        "vegas-cmf/session" : "1.0.*",
+        "vegas-cmf/auth" : "1.0.*",
+        "vegas-cmf/oauth" : "1.0.*",
+        "vegas-cmf/filter" : "1.0.*",
+        "vegas-cmf/validation" : "1.0.*",
+        "vegas-cmf/forms" : "1.0.*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.0.*"
