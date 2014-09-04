@@ -29,7 +29,10 @@ class DbServiceProvider implements ServiceProviderInterface
                 "dbname" => $config->database->dbname,
                 "port" => $config->database->port,
                 "username" => $config->database->username,
-                "password" => $config->database->password
+                "password" => $config->database->password,
+                "options" => array(
+                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+                )
             ));
         }, true);
     }
