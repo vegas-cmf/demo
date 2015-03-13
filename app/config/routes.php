@@ -1,9 +1,9 @@
 <?php
-return array(
-    'root'  =>  array(
+return [
+    'root'  =>  [
         'route' =>  '/',
         'type'  =>  'static',
-        'paths' =>  array(
+        'paths' =>  [
             'module'    =>  'Home',
             'controller'    =>  'Frontend\Home',
             'action'    =>  'index',
@@ -17,6 +17,6 @@ return array(
              *              provider.
              */
             'auth'  =>  false
-        )
-    )
-);
+        ]
+    ]
+];

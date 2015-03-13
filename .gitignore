@@ -1,5 +1,3 @@
-# Created by http://www.gitignore.io
-
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
@@ -38,4 +36,3 @@ public/assets/vendor/*
 
 app/config/services.php
 app/config/modules.php
-app/config/mailers.php

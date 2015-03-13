@@ -1,27 +1,27 @@
 <?php
 
-return array(
-    'login' => array(
+return [
+    'login' => [
         'route' => '/login',
-        'paths' => array(
+        'paths' => [
             'module' => 'Auth',
             'controller' => 'Frontend\Auth',
             'action' => 'login',
 
             'auth'  =>  false
-        ),
+        ],
         'type' => 'static'
 
-    ),
-    'logout' => array(
+    ],
+    'logout' => [
         'route' => '/logout',
-        'paths' => array(
+        'paths' => [
             'module' => 'Auth',
             'controller' => 'Frontend\Auth',
             'action' => 'logout',
 
             'auth'  =>  'auth'
-        ),
+        ],
         'type' => 'static'
-    )
-);
+    ]
+];

@@ -1,11 +1,11 @@
 <?php
-return array(
-    'auth'  =>  array(
-        'auth'  =>  array(
+return [
+    'auth'  =>  [
+        'auth'  =>  [
             'route'    =>  'login'
-        ),
-        'authDashboard'  =>  array(
+        ],
+        'authDashboard'  =>  [
             'route'    =>  'dashboard_login'
-        )
-    )
-);
+        ]
+    ]
+];

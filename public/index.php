@@ -13,8 +13,4 @@ $config = require APP_ROOT . '/app/config/config.php';
 
 $bootstrap = new \Bootstrap(new \Phalcon\Config($config));
 
-try {
-    echo $bootstrap->setup()->run();
-} catch (\Exception $e) {
-    file_put_contents('/tmp/vegas-cmf-error.log', $e->getTraceAsString() . PHP_EOL . $_SERVER['REQUEST_URI']);
-}
+echo $bootstrap->setup()->run();

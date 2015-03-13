@@ -2,7 +2,7 @@
 /**
  * This file is part of Vegas package
  *
- * @author Slawomir Zytko <slawomir.zytko@gmail.com>
+ * @author Slawomir Zytko <slawek@amsterdam-standard.pl>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * @homepage http://vegas-cmf.github.io
  *
@@ -10,35 +10,24 @@
  * file that was distributed with this source code.
  */
 namespace Auth\Controllers\Frontend;
+use Vegas\Mvc\Controller\ControllerAbstract;
+use Vegas\Security\Authentication\Exception;
 
 /**
  * Class AuthController
- *
- * @ACL(name='mvc:auth:Frontend\Auth', description='Authentication')
  * @package Auth\Controllers\Frontend
  */
-class AuthController extends \Vegas\Mvc\Controller\ControllerAbstract
+class AuthController extends ControllerAbstract
 {
 
-    public function signupAction()
-    {
-        $this->view->setLayout('login');
-        $this->view->setRenderLevel(\Vegas\Mvc\View::LEVEL_LAYOUT);
-    }
-
     /**
-     * @ACL(name='login', description='Login action')
-     * @throws \Vegas\Security\Authentication\Exception\InvalidCredentialException
-     * @return \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface
+     * @return \Phalcon\Http\ResponseInterface
      */
     public function loginAction()
     {
-        $this->view->setLayout('login');
-        $this->view->setRenderLevel(\Vegas\Mvc\View::LEVEL_LAYOUT);
-
         $this->service = $this->serviceManager->getService('auth:auth');
         if ($this->di->get('auth')->isAuthenticated()) {
-            return $this->response->redirect(array('for' => 'root'));
+            return $this->response->redirect(['for' => 'root']);
         }
         //oauth
         $oAuth = $this->serviceManager->getService('oauth:oauth');
@@ -61,15 +50,14 @@ class AuthController extends \Vegas\Mvc\Controller\ControllerAbstract
 
                 $this->session->remove('redirect_url');
                 return $this->response->redirect($redirectUrl);
-            } catch (\Vegas\Security\Authentication\Exception $ex) {
+            } catch (Exception $ex) {
                 $this->flash->error($this->i18n->_($ex->getMessage()));
             }
         }
     }
 
     /**
-     * @ACL(name='logout', description='Logout action')
-     * @return \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface
+     * @return \Phalcon\Http\ResponseInterface
      */
     public function logoutAction()
     {
@@ -77,7 +65,7 @@ class AuthController extends \Vegas\Mvc\Controller\ControllerAbstract
 
         $authService = $this->serviceManager->getService('auth:auth');
         $authService->logout();
-        return $this->response->redirect(array('for' => 'login'));
+        return $this->response->redirect(['for' => 'login']);
     }
 }
  

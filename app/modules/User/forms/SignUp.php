@@ -23,12 +23,10 @@ class SignUp extends Form
 {
     public function initialize()
     {
-        $config = $this->di->get('config');
-        
         $email = new Text('email');
         $email->addValidator(new PresenceOf());
         $email->addValidator(new EmailValidator());
-        $email->setAttribute('placeholder', 'john@onderzoeksraad.nl');
+        $email->setAttribute('placeholder', 'email@example.com');
         $email->setAttribute('class', 'col-xs-12');
         $email->setLabel($this->i18n->_('Email'));
         $this->add($email);
@@ -44,6 +42,5 @@ class SignUp extends Form
         $rePassword->setLabel($this->i18n->_('Re-type Password'));
         $rePassword->setAttribute('class', 'col-xs-12');
         $this->add($rePassword);
-
     }
 }

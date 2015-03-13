@@ -32,6 +32,6 @@ class PreviewManagerServiceProvider implements ServiceProviderInterface
      */
     public function getDependencies()
     {
-        return array();
+        return [];
     }
 } 

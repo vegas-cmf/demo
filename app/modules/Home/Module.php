@@ -2,7 +2,7 @@
 /**
  * This file is part of Vegas package
  *
- * @author Slawomir Zytko <slawomir.zytko@gmail.com>
+ * @author Slawomir Zytko <slawek@amsterdam-standard.pl>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * @homepage http://vegas-cmf.github.io
  *
@@ -12,7 +12,9 @@
 
 namespace Home;
 
-class Module extends \Vegas\Mvc\ModuleAbstract
+use Vegas\Mvc\ModuleAbstract;
+
+class Module extends ModuleAbstract
 {
     public function __construct() {
         $this->namespace = __NAMESPACE__;

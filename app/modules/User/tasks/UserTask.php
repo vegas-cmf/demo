@@ -2,7 +2,7 @@
 /**
  * This file is part of Vegas package
  *
- * @author Slawomir Zytko <slawomir.zytko@gmail.com>
+ * @author Slawomir Zytko <slawek@amsterdam-standard.pl>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * @homepage http://vegas-cmf.github.io
  *
@@ -12,7 +12,12 @@
 
 namespace User\Tasks;
 
-class UserTask extends \Vegas\Cli\Task
+use Auth\Models\BaseUser;
+use Vegas\Cli\Task;
+use Vegas\Cli\Task\Action;
+use Vegas\Cli\Task\Option;
+
+class UserTask extends Task
 {
 
     /**
@@ -22,17 +27,17 @@ class UserTask extends \Vegas\Cli\Task
      */
     public function setOptions()
     {
-        $action = new \Vegas\Cli\Task\Action('create', 'Create user account');
+        $action = new Action('create', 'Create user account');
 
-        $option = new \Vegas\Cli\Task\Option('email', 'e', 'User email address');
+        $option = new Option('email', 'e', 'User email address');
         $option->setRequired(true);
         $action->addOption($option);
 
-        $option = new \Vegas\Cli\Task\Option('password', 'p', 'User password');
+        $option = new Option('password', 'p', 'User password');
         $option->setRequired(true);
         $action->addOption($option);
 
-        $option = new \Vegas\Cli\Task\Option('name', 'n', 'User name');
+        $option = new Option('name', 'n', 'User name');
         $option->setRequired(true);
         $action->addOption($option);
 
@@ -41,7 +46,7 @@ class UserTask extends \Vegas\Cli\Task
 
     public function createAction()
     {
-        $user = new \Auth\Models\BaseUser();
+        $user = new BaseUser();
         $user->email = $this->getOption('email');
         $user->raw_password = $this->getOption('password');
         $user->name = $this->getOption('name');

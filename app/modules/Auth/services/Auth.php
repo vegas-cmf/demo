@@ -13,28 +13,32 @@
 namespace Auth\Services;
 
 use Auth\Models\BaseUser;
+use Phalcon\DI\InjectionAwareInterface;
+use Vegas\DI\InjectionAwareTrait;
+use Vegas\Security\Authentication;
+use Vegas\Security\Authentication\Exception\IdentityNotFoundException;
 use Vegas\Security\OAuth\Exception\ServiceNotFoundException;
 
 /**
  * Class Auth
  * @package Auth\Services
  */
-class Auth implements \Phalcon\DI\InjectionAwareInterface
+class Auth implements InjectionAwareInterface
 {
-    use \Vegas\DI\InjectionAwareTrait;
+    use InjectionAwareTrait;
 
     /**
      * Authenticates user by email and password
      *
      * @param $email
      * @param $password
-     * @throws \Vegas\Security\Authentication\Exception\IdentityNotFoundException
+     * @throws IdentityNotFoundException
      */
     public function login($email, $password) 
     {
-        $user = BaseUser::findFirst(array(array('email' => $email)));
+        $user = BaseUser::findFirst([['email' => $email]]);
         if (!$user) {
-            throw new \Vegas\Security\Authentication\Exception\IdentityNotFoundException();
+            throw new IdentityNotFoundException();
         }
         $this->di->get('auth')->authenticate($user, $password);
     }
@@ -60,17 +64,17 @@ class Auth implements \Phalcon\DI\InjectionAwareInterface
      *
      * @param $email
      * @return mixed
-     * @throws \Vegas\Security\Authentication\Exception\IdentityNotFoundException
+     * @throws IdentityNotFoundException
      */
     public function authenticateByEmail($email)
     {
-        $user = BaseUser::findFirst(array(array('email' => $email)));
+        $user = BaseUser::findFirst([['email' => $email]]);
         if (!$user) {
-            throw new \Vegas\Security\Authentication\Exception\IdentityNotFoundException();
+            throw new IdentityNotFoundException();
         }
-        $adapter = new \Vegas\Security\Authentication\Adapter\Email($this->di->get('userPasswordManager'));
+        $adapter = new \Vegas\Security\Authentication\Adapter\NoCredential($this->di->get('userPasswordManager'));
         $adapter->setSessionStorage($this->obtainSessionScope());
-        $auth = new \Vegas\Security\Authentication($adapter);
+        $auth = new Authentication($adapter);
         $auth->authenticate($user, null);
         return $auth->getIdentity();
     }

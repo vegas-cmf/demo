@@ -1,19 +1,15 @@
-<div class="inner cover">
-    <h1 class="cover-heading">Vegas Startup Project.</h1>
-    <p class="lead">Vegas CMF is a complex Content Management Framework that allows you to easily build own CMS.</p>
-    <p class="lead">
-        <a href="http://vegas-cmf.github.io/" class="btn btn-lg btn-default">Learn more</a>
-    </p>
-
-    {% if identity is defined %}
-    <p>
-        Logged in as {{ identity.getEmail() }} | <a href="{{ url.get(['for' : 'logout']) }}">Logout</a>
-    </p>
-    {% endif %}
-</div>
-
-<div class="mastfoot">
-    <div class="inner">
-        <p>Thanks for using <a href="http://vegas.amsterdam-standard.pl">Vegas CMF</a>.</p>
+<div class="col-lg-12" id="box-docs">
+    <div class="jumbotron">
+        <h2 class="col-xs-6">
+            <a href="https://vegas-cmf.github.io" target="_blank">
+                <i class="fa fa-graduation-cap"></i> {{ i18n._('read the docs') }}
+            </a>
+        </h2>
+        <h2 class="col-xs-6">
+            <a href="https://github.com/vegas-cmf" target="_blank">
+                <i class="fa fa-github"></i> {{ i18n._('check our github') }}
+            </a>
+        </h2>
+        <div class="clearfix"></div>
     </div>
 </div>

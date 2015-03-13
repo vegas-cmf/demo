@@ -2,7 +2,7 @@
 /**
  * This file is part of Vegas package
  *
- * @author Slawomir Zytko <slawomir.zytko@gmail.com>
+ * @author Slawomir Zytko <slawek@amsterdam-standard.pl>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * @homepage http://vegas-cmf.github.io
  *
@@ -10,17 +10,14 @@
  * file that was distributed with this source code.
  */
 namespace Oauth\Controllers\Frontend;
-use User\Services\Exception\SignUpFailedException;
-use Vegas\Security\Authentication\Exception\IdentityNotFoundException;
+use Vegas\Mvc\Controller\ControllerAbstract;
 use Vegas\Security\OAuth\Exception\FailedAuthorizationException;
 
 /**
- * Class AuthController
- *
- * @ACL(name='mvc:auth:Frontend\Oauth', description='Open Authorization')
+ * Class OauthController
  * @package Oauth\Controllers\Frontend
  */
-class OauthController extends \Vegas\Mvc\Controller\ControllerAbstract
+class OauthController extends ControllerAbstract
 {
 
     /**
@@ -36,24 +33,15 @@ class OauthController extends \Vegas\Mvc\Controller\ControllerAbstract
 
         try {
             $oauth->authorize($serviceName);
-        } catch(FailedAuthorizationException $ex) {
-            $this->flashSession->message('error', $ex->getMessage());
-        }
-
-        try {
             $identity = $oauth->getIdentity($serviceName);
             $oauth->authenticate($identity);
 
-            return $this->response->redirect(array('for' => 'root'))->send();
-        } catch (IdentityNotFoundException $ex) {
-            $this->flashSession->message('error', $ex->getMessage());
-        } catch (SignUpFailedException $ex) {
-            $this->flashSession->message('error', $ex->getMessage());
+            return $this->response->redirect(['for' => 'root'])->send();
         } catch (\Exception $ex) {
-            $this->flashSession->message('error', $ex->getMessage());
+            $this->flash->error($ex->getMessage());
         }
 
-        return $this->response->redirect(array('for' => 'login'))->send();
+        return $this->response->redirect(['for' => 'login'])->send();
     }
 }
  

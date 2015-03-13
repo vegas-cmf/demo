@@ -2,7 +2,7 @@
 /**
  * This file is part of Vegas package
  *
- * @author Slawomir Zytko <slawomir.zytko@gmail.com>
+ * @author Slawomir Zytko <slawek@amsterdam-standard.pl>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * @homepage http://vegas-cmf.github.io
  *
@@ -24,16 +24,16 @@ class DbServiceProvider implements ServiceProviderInterface
     {
         $di->set(self::SERVICE_NAME, function () use ($di) {
             $config = $di->get('config');
-            return new Phalcon\Db\Adapter\Pdo\Mysql(array(
+            return new Phalcon\Db\Adapter\Pdo\Mysql([
                 "host" => $config->database->host,
                 "dbname" => $config->database->dbname,
                 "port" => $config->database->port,
                 "username" => $config->database->username,
                 "password" => $config->database->password,
-                "options" => array(
+                "options" => [
                     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-                )
-            ));
+                ]
+            ]);
         }, true);
     }
 
@@ -42,8 +42,8 @@ class DbServiceProvider implements ServiceProviderInterface
      */
     public function getDependencies()
     {
-        return array(
+        return [
             ModelsManagerServiceProvider::SERVICE_NAME
-        );
+        ];
     }
 } 

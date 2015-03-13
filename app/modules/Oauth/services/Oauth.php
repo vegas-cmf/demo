@@ -12,8 +12,10 @@
 
 namespace Oauth\Services;
 
+use Phalcon\DI\InjectionAwareInterface;
 use User\Models\User;
 use User\Services\Exception\SignUpFailedException;
+use Vegas\DI\InjectionAwareTrait;
 use Vegas\Security\Authentication\Exception\IdentityNotFoundException;
 use Vegas\Security\Authentication\Identity as AuthIdentity;
 use Vegas\Security\OAuth\Exception\ServiceNotFoundException;
@@ -25,19 +27,19 @@ use Vegas\Security\OAuth\ServiceAbstract;
  * Class Oauth
  * @package Oauth\Services
  */
-class Oauth implements \Phalcon\DI\InjectionAwareInterface
+class Oauth implements InjectionAwareInterface
 {
-    use \Vegas\DI\InjectionAwareTrait;
+    use InjectionAwareTrait;
 
     /**
      * @var array
      */
-    protected $config = array();
+    protected $config = [];
 
     /**
      * @var array
      */
-    protected $oAuthServices = array();
+    protected $oAuthServices = [];
 
     /**
      * @var null
@@ -71,11 +73,11 @@ class Oauth implements \Phalcon\DI\InjectionAwareInterface
         foreach ($this->config as $serviceName => $serviceConfig) {
             $service = $this->oAuth->obtainServiceInstance($serviceName);
 
-            $service->setupCredentials(array(
+            $service->setupCredentials([
                 'key'   =>  $serviceConfig['key'],
                 'secret'    =>  $serviceConfig['secret'],
                 'redirect_uri'  =>  $serviceConfig['redirect_uri']
-            ));
+            ]);
             if (isset($serviceConfig['scopes'])) {
                 $service->setScopes($serviceConfig['scopes']);
             }
@@ -180,7 +182,7 @@ class Oauth implements \Phalcon\DI\InjectionAwareInterface
             $userModel->writeAttributes($identityValues);
 
             //try to create new account
-            if (!$userService->create($userModel)) {
+            if (!$userService->createAccount($userModel)) {
                 throw new SignUpFailedException();
             }
 
