@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Slawomir Zytko <slawomir.zytko@gmail.com>
+ * @author Slawomir Zytko <slawek@amsterdam-standard.pl>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * Date: 5/23/14
  * Time: 9:25 AM
@@ -29,7 +29,7 @@ class Identity extends CollectionAbstract
      */
     public static function findUserIdentities(\MongoId $userId)
     {
-        return Identity::find(array(array('user_id' => $userId)));
+        return Identity::find([['user_id' => $userId]]);
     }
 
     /**

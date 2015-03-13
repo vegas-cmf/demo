@@ -2,7 +2,7 @@
 /**
  * This file is part of Vegas package
  *
- * @author Slawomir Zytko <slawomir.zytko@gmail.com>
+ * @author Slawomir Zytko <slawek@amsterdam-standard.pl>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * @homepage http://vegas-cmf.github.io
  *
@@ -24,11 +24,11 @@ class I18nServiceProvider implements ServiceProviderInterface
     {
         $config = $di->get('config');
         $di->set('i18n', function() use ($config) {
-            return new \Vegas\Translate\Adapter\Gettext(array(
+            return new \Vegas\Translate\Adapter\Gettext([
                 'locale' => $config->application->language,
                 'file' => 'messages',
                 'directory' => APP_ROOT.'/lang'
-            ));
+            ]);
         });
     }
 
@@ -37,6 +37,6 @@ class I18nServiceProvider implements ServiceProviderInterface
      */
     public function getDependencies()
     {
-        return array();
+        return [];
     }
 } 

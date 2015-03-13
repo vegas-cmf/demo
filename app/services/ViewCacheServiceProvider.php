@@ -2,7 +2,7 @@
 /**
  * This file is part of Vegas package
  *
- * @author Slawomir Zytko <slawomir.zytko@gmail.com>
+ * @author Slawomir Zytko <slawek@amsterdam-standard.pl>
  * @copyright Amsterdam Standard Sp. Z o.o.
  * @homepage http://vegas-cmf.github.io
  *
@@ -25,14 +25,14 @@ class ViewCacheServiceProvider implements \Vegas\DI\ServiceProviderInterface {
         $di->set(self::SERVICE_NAME, function() use ($config) {
 
             //Cache data for one day by default
-            $frontCache = new Phalcon\Cache\Frontend\Output(array(
+            $frontCache = new Phalcon\Cache\Frontend\Output([
                 "lifetime" => 86400
-            ));
+            ]);
 
             //File backend settings
-            $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+            $cache = new Phalcon\Cache\Backend\File($frontCache, [
                 "cacheDir" => $config->application->cacheDir
-            ));
+            ]);
 
             return $cache;
         });
@@ -43,7 +43,7 @@ class ViewCacheServiceProvider implements \Vegas\DI\ServiceProviderInterface {
      */
     public function getDependencies()
     {
-        return array();
+        return [];
     }
 }
  

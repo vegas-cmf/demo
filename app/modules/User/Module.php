@@ -12,7 +12,9 @@
 
 namespace User;
 
-class Module extends \Vegas\Mvc\ModuleAbstract
+use Vegas\Mvc\ModuleAbstract;
+
+class Module extends ModuleAbstract
 {
     public function __construct() {
         $this->namespace = __NAMESPACE__;

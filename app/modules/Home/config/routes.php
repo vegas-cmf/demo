@@ -1,14 +1,14 @@
 <?php
-return array(
-    'private' => array(
+return [
+    'private' => [
         'route' => '/private',
-        'paths' => array(
+        'paths' => [
             'module'    =>  'Home',
             'controller' => 'Frontend\Private',
             'action' => 'index',
 
             'auth'  =>  'auth',
-        ),
+        ],
         'type' => 'static',
-    )
-);
+    ]
+];

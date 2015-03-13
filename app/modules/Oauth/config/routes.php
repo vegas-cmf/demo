@@ -1,24 +1,24 @@
 <?php
 
-return array(
-    'oauth' => array(
+return [
+    'oauth' => [
         'route' => '/oauth',
-        'paths' => array(
+        'paths' => [
             'module'    =>  'Oauth',
             'controller' => 'Frontend\Oauth',
             'action' => 'oauth',
 
             'auth'  =>  false
-        )
-    ),
-    'authorize' => array(
+        ]
+    ],
+    'authorize' => [
         'route' => '/oauth/{service}',
-        'paths' => array(
+        'paths' => [
             'module'    =>  'Oauth',
             'controller' => 'Frontend\Oauth',
             'action' => 'authorize',
 
             'auth'  =>  false
-        )
-    )
-);
+        ]
+    ]
+];

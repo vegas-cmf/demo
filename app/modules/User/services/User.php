@@ -14,9 +14,11 @@
 namespace User\Services;
 
 use Phalcon\DI\InjectionAwareInterface;
+use User\Forms\SignUp;
 use User\Models\User as UserModel;
-use User\Services\EventsManager\SignUp;
+use User\Services\Exception\InvalidFormException;
 use User\Services\Exception\UserAlreadyExistsException;
+use Vegas\DI\InjectionAwareTrait;
 use Vegas\DI\Service\ModelProxyAbstract;
 
 /**
@@ -25,110 +27,46 @@ use Vegas\DI\Service\ModelProxyAbstract;
  */
 class User extends ModelProxyAbstract implements InjectionAwareInterface
 {
-    use \Vegas\DI\InjectionAwareTrait;
-
-    /**
-     *
-     */
-    public function __construct()
-    {
-        $this->model = new UserModel();
-    }
-
-    /**
-     *
-     */
-    public function setupEventsManager()
-    {
-        $eventsManager = $this->di->get('eventsManager');
-        $eventsManager->attach('user:afterSignUp', SignUp::afterSignUp());
-
-        $this->di->set('eventsManager', $eventsManager);
-    }
+    use InjectionAwareTrait;
 
     /**
      * @param array $data
-     * @return bool
-     * @throws Exception\UserAlreadyExistsException
+     * @return UserModel
+     * @throws InvalidFormException
+     * @throws UserAlreadyExistsException
+     * @throws \Exception
      */
     public function validate(array $data)
     {
+        $form = new SignUp();
+        $entity = new UserModel();
+        $form->bind($data, $entity);
+        if (!$form->isValid($data)) {
+            throw new InvalidFormException($form);
+        }
+
         $email = $data['email'];
-        $usersCount = UserModel::count(array(array('email'    =>  $email)));
+        $usersCount = UserModel::count([['email'    =>  $email]]);
         if ($usersCount > 0) {
             throw new UserAlreadyExistsException();
         }
 
-        return true;
+        if ($data['password'] !== $data['password']) {
+            throw new \Exception('Passwords do not match');
+        }
+        unset($entity->repassword);
+
+        return $entity;
     }
 
     /**
-     * @param UserModel $userModel
+     * @param UserModel $userEntity
      * @return bool
      */
-    public function create(UserModel $userModel)
+    public function createAccount(UserModel $userEntity)
     {
-        $this->setupEventsManager();
-        $this->validate($userModel->toArray());
-        $result = $userModel->save();
-        $this->di->get('eventsManager')->fire('user:afterSignUp', array('user' => $userModel));
+        $result = $userEntity->save();
 
         return $result;
     }
-
-    /**
-     * @return array
-     */
-    public function findWithIdAsKey() 
-    {
-        $preparedUsers = [];
-        $users = $this->model->find();
-        foreach($users as $user) {
-            $preparedUsers[(string)$user->getId()] = $user;
-        }
-
-        return $preparedUsers;
-    }
-
-    /**
-     * @param $query
-     * @return array
-     */
-    public function getUsers($query)
-    {
-        return UserModel::find($query);
-    }
-
-    /**
-     * @param $id
-     * @param bool $throwException
-     * @return \Phalcon\Mvc\Collection
-     * @throws \Vegas\Exception
-     */
-    public function retrieveById($id, $throwException=false)
-    {
-        $user = UserModel::findById($id);
-
-        if ($throwException && !$user) {
-            throw new \Vegas\Exception('User does not exist', 404);
-        }
-
-        return $user;
-    }
-
-    /**
-     * @return array
-     */
-    public function getForMultiSelect()
-    {
-        $usersForMultiSelect = [];
-        $users = $this->model->find(array('sort' => array('last_name' => 1)));
-
-        foreach($users as $user) {
-            $usersForMultiSelect[(string)$user->_id] = sprintf('%s %s', $user->first_name, $user->last_name);
-        }
-
-        return $usersForMultiSelect;
-    }
-
 }
